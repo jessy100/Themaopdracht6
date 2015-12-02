@@ -31,7 +31,7 @@
   </types>
   <filters />
   <items>
-    <item id="di625688898249495279" cid="UC003" type="use-case" name="Status wasprogramma weergeven" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:46:33">
+    <item id="di625688898249495279" cid="UC003" type="use-case" name="Status wasprogramma weergeven" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:46:33">
       <stereotypes />
       <tagged-values />
       <associated-diagrams />
@@ -39,7 +39,7 @@
       <style class="default" />
       <use-case />
     </item>
-    <item id="di627338273749893104" cid="REL004" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:47:27">
+    <item id="di627338273749893104" cid="REL004" type="relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:47:27">
       <stereotypes />
       <tagged-values />
       <associated-diagrams />
@@ -78,7 +78,7 @@
           </authors>
           <description />
           <creation-date>11/25/2015 14:28:16</creation-date>
-          <change-date>12/02/2015 13:45:47</change-date>
+          <change-date>12/02/2015 14:48:20</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
@@ -101,8 +101,6 @@
               <owned-item ref="di622798245819355910" />
               <owned-item ref="di932043764881541635" />
               <owned-item ref="di932043764881541635" />
-              <owned-item ref="di352713989488340187" />
-              <owned-item ref="di681676389487176223" />
             </owned-items>
             <style class="default" />
           </item>
@@ -136,7 +134,7 @@
               <end-role id="" name="" navigability="" association-type="association" visibility="private" />
             </relation>
           </item>
-          <item id="di338623471710463522" cid="UC004" type="use-case" name="Wasprogramma onderbreken/hervatten" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:51:01">
+          <item id="di338623471710463522" cid="UC004" type="use-case" name="Wasprogramma onderbreken" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:51:01">
             <stereotypes />
             <tagged-values />
             <associated-diagrams />
@@ -152,7 +150,7 @@
             <style class="default" />
             <use-case />
           </item>
-          <item id="di518773260786556870" cid="EX002" type="extend" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:43:49">
+          <item id="di518773260786556870" cid="EX002" type="extend" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:43:49">
             <stereotypes>
               <stereotype name="extend" />
             </stereotypes>
@@ -162,7 +160,7 @@
             <style class="default" />
             <extend extension-point="" />
           </item>
-          <item id="di623635399667908739" cid="INC001" type="include" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:42:23">
+          <item id="di623635399667908739" cid="INC001" type="include" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:42:23">
             <stereotypes>
               <stereotype name="include" />
             </stereotypes>
@@ -171,7 +169,7 @@
             <owned-items />
             <style class="default" />
           </item>
-          <item id="di513319297371801932" cid="EX001" type="extend" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:41:50">
+          <item id="di513319297371801932" cid="EX001" type="extend" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:41:50">
             <stereotypes>
               <stereotype name="extend" />
             </stereotypes>
@@ -190,7 +188,7 @@
             <owned-items />
             <style class="default" />
           </item>
-          <item id="di513255535163419133" cid="UC002" type="use-case" name="Activiteiten Logs weergeven" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:43:16">
+          <item id="di513255535163419133" cid="UC002" type="use-case" name="Activiteiten Logs weergeven" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:43:16">
             <stereotypes />
             <tagged-values />
             <associated-diagrams />
@@ -198,7 +196,7 @@
             <style class="default" />
             <use-case />
           </item>
-          <item id="di697886807791599792" cid="REL001" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:43:29">
+          <item id="di697886807791599792" cid="REL001" type="relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:43:29">
             <stereotypes />
             <tagged-values />
             <associated-diagrams />
@@ -209,7 +207,7 @@
               <end-role id="" name="" navigability="" association-type="association" visibility="private" />
             </relation>
           </item>
-          <item id="di460468126702620086" cid="REL002" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:43:34">
+          <item id="di460468126702620086" cid="REL002" type="relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:43:34">
             <stereotypes />
             <tagged-values />
             <associated-diagrams />
@@ -220,7 +218,7 @@
               <end-role id="" name="" navigability="" association-type="association" visibility="private" />
             </relation>
           </item>
-          <item id="di792056490961298788" cid="UC006" type="use-case" name="Wasprogramma stoppen" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:43:05">
+          <item id="di792056490961298788" cid="UC006" type="use-case" name="Wasprogramma Hervatten" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:43:05">
             <stereotypes />
             <tagged-values />
             <associated-diagrams />
@@ -228,7 +226,7 @@
             <style class="default" />
             <use-case />
           </item>
-          <item id="di537923957145440935" cid="REL003" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:47:19">
+          <item id="di537923957145440935" cid="REL003" type="relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 12:47:19">
             <stereotypes />
             <tagged-values />
             <associated-diagrams />
@@ -239,7 +237,7 @@
               <end-role id="" name="" navigability="" association-type="association" visibility="private" />
             </relation>
           </item>
-          <item id="di132191354395009802" cid="UC005" type="use-case" name="System logs weergeven" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:37:36">
+          <item id="di132191354395009802" cid="UC005" type="use-case" name="System logs weergeven" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:37:36">
             <stereotypes />
             <tagged-values />
             <associated-diagrams />
@@ -247,7 +245,7 @@
             <style class="default" />
             <use-case />
           </item>
-          <item id="di945052385570575626" cid="REL006" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:37:55">
+          <item id="di945052385570575626" cid="REL006" type="relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:37:55">
             <stereotypes />
             <tagged-values />
             <associated-diagrams />
@@ -258,7 +256,7 @@
               <end-role id="" name="" navigability="" association-type="association" visibility="private" />
             </relation>
           </item>
-          <item id="di332835839562933892" cid="REL007" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:45:47">
+          <item id="di332835839562933892" cid="REL007" type="relationship" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 13:45:47">
             <stereotypes />
             <tagged-values />
             <associated-diagrams />
@@ -268,6 +266,24 @@
               <start-role id="" name="" navigability="" association-type="association" visibility="private" />
               <end-role id="" name="" navigability="" association-type="association" visibility="private" />
             </relation>
+          </item>
+          <item id="di293540260870720224" cid="UC001" type="use-case" name="Wasprogramma stoppen" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 14:48:03">
+            <stereotypes />
+            <tagged-values />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <use-case />
+          </item>
+          <item id="di227999508365974873" cid="EX001" type="extend" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/02/2015 14:48:20">
+            <stereotypes>
+              <stereotype name="extend" />
+            </stereotypes>
+            <tagged-values />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <extend extension-point="" />
           </item>
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
@@ -282,7 +298,7 @@
             <layout ax="321" ay="508" awidth="90" aheight="98.49988" x="321" y="508" width="90" height="98.49988" angle="0" />
           </item>
           <item id="di932043764881541635" iid="59bb4ba3ccdd43f4b6dd820b82858220" container="di151924592213296432" container-iid="02ae655965534613abe3b1b7128a2be3" creation-date="11/25/2015 15:00:34" order-index="3" type="entity">
-            <layout ax="506.2083" ay="588.4999" awidth="141" aheight="88" x="506.2083" y="588.4999" width="141" height="142" angle="0" />
+            <layout ax="506.2083" ay="588.4999" awidth="141" aheight="88" x="506.2083" y="588.4999" width="141" height="88" angle="0" />
             <use-case show-extension-points="true" />
           </item>
           <item id="di139180911628016532" iid="b5d5314683ef4602bfac4a031552c342" creation-date="11/25/2015 15:22:30" order-index="4" type="entity">
@@ -374,6 +390,19 @@
             </layout>
             <relation from="di425975631445495136" from-iid="b112a3ba7d2946d5a58812c165163086" to="di513255535163419133" to-iid="99f9b579da5f4facb8e427a3903d1c14" />
             <role-positions start-role="25,15" end-role="25,-15" start-multiplicity="25,-15" end-multiplicity="25,15" />
+          </item>
+          <item id="di293540260870720224" iid="e5ef54c1b4bb4ef4ab1dcfba8c8173eb" container="di151924592213296432" container-iid="02ae655965534613abe3b1b7128a2be3" creation-date="12/02/2015 14:48:03" order-index="24" type="entity">
+            <layout ax="926" ay="329" awidth="140" aheight="88" x="926" y="329" width="140" height="88" angle="0" />
+            <use-case show-extension-points="true" />
+          </item>
+          <item id="di227999508365974873" iid="edfeaa488bb14604b9541a3aa8ef52ea" creation-date="12/02/2015 14:48:20" order-index="25" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" name-position="10,-10" auto-path="" x1="936" y1="396" x2="637" y2="609" start-border-pos="0.752074761824174" end-border-pos="0.250654567371715">
+              <points>
+                <point x="936" y="396" />
+                <point x="637" y="609" />
+              </points>
+            </layout>
+            <relation from="di293540260870720224" from-iid="e5ef54c1b4bb4ef4ab1dcfba8c8173eb" to="di932043764881541635" to-iid="59bb4ba3ccdd43f4b6dd820b82858220" />
           </item>
         </layer>
       </diagram>
