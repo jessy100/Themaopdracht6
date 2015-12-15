@@ -98,6 +98,10 @@
         <value>2</value>
       </counter>
       <counter>
+        <item-type stereotype="" type="AbstractElementGroup" />
+        <value>158</value>
+      </counter>
+      <counter>
         <item-type stereotype="" type="UmlSwimlane" />
         <value>2</value>
       </counter>
@@ -116,10 +120,6 @@
       <counter>
         <item-type stereotype="" type="ConcurrencyMutex" />
         <value>3</value>
-      </counter>
-      <counter>
-        <item-type stereotype="" type="AbstractElementGroup" />
-        <value>28</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -2416,35 +2416,35 @@
           <version />
         </meta>
         <abstract-items>
-          <item id="di528188048843700419" cid="TSK001" type="concurrency-task" name="Webinterface" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 14:54:31">
+          <item id="di528188048843700419" cid="TSK001" type="concurrency-task" name="Webinterface" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 14:54:31">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
             <communication-lifeline classifier-name="" is-active="false" is-multi-object="false" />
           </item>
-          <item id="di412732305850918829" cid="TSK002" type="concurrency-task" name="websocket" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 14:54:38">
+          <item id="di412732305850918829" cid="TSK002" type="concurrency-task" name="websocket" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 14:54:38">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
             <communication-lifeline classifier-name="" is-active="false" is-multi-object="false" />
           </item>
-          <item id="di728291519317098834" cid="QUE001" type="concurrency-queue" name="QueueIn" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 14:55:06">
+          <item id="di728291519317098834" cid="QUE001" type="concurrency-queue" name="QueueIn" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 14:55:06">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
             <communication-lifeline classifier-name="" is-active="false" is-multi-object="false" />
           </item>
-          <item id="di143493932622651437" cid="QUE002" type="concurrency-queue" name="QueueOut" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 14:56:56">
+          <item id="di143493932622651437" cid="QUE002" type="concurrency-queue" name="QueueOut" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 14:56:56">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
             <communication-lifeline classifier-name="" is-active="false" is-multi-object="false" />
           </item>
-          <item id="di472444188206052651" cid="CMSG001" type="communication-message" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 14:59:43">
+          <item id="di472444188206052651" cid="CMSG001" type="communication-message" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 14:59:43">
             <stereotypes />
             <documentation>
               <text>
@@ -2479,7 +2479,7 @@
               </messages>
             </communication-message>
           </item>
-          <item id="di137719267309241891" cid="CMSG003" type="communication-message" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:01:03">
+          <item id="di137719267309241891" cid="CMSG003" type="communication-message" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:01:03">
             <stereotypes />
             <documentation>
               <text>
@@ -2514,7 +2514,7 @@
               </messages>
             </communication-message>
           </item>
-          <item id="di993142631488459181" cid="CMSG006" type="communication-message" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:01:07">
+          <item id="di993142631488459181" cid="CMSG006" type="communication-message" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:01:07">
             <stereotypes />
             <documentation>
               <text>
@@ -2549,7 +2549,7 @@
               </messages>
             </communication-message>
           </item>
-          <item id="di301054922842159141" cid="CMSG007" type="communication-message" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:01:09">
+          <item id="di301054922842159141" cid="CMSG007" type="communication-message" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:01:09">
             <stereotypes />
             <documentation>
               <text>
@@ -2584,14 +2584,14 @@
               </messages>
             </communication-message>
           </item>
-          <item id="di173340664433375367" cid="MTX001" type="concurrency-mutex" name="Mutex In" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:27:22">
+          <item id="di173340664433375367" cid="MTX001" type="concurrency-mutex" name="Mutex In" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:27:22">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
             <communication-lifeline classifier-name="" is-active="false" is-multi-object="false" />
           </item>
-          <item id="di356923231191451736" cid="CMSG008" type="communication-message" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:27:55">
+          <item id="di356923231191451736" cid="CMSG008" type="communication-message" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:27:55">
             <stereotypes />
             <documentation>
               <text>
@@ -2629,14 +2629,14 @@
               </messages>
             </communication-message>
           </item>
-          <item id="di487656059396421055" cid="MTX002" type="concurrency-mutex" name="Mutex2" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:29:23">
+          <item id="di487656059396421055" cid="MTX002" type="concurrency-mutex" name="Mutex2" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:29:23">
             <stereotypes />
             <associated-diagrams />
             <owned-items />
             <style class="default" />
             <communication-lifeline classifier-name="" is-active="false" is-multi-object="false" />
           </item>
-          <item id="di535535970936556715" cid="CMSG009" type="communication-message" name="" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:29:37">
+          <item id="di535535970936556715" cid="CMSG009" type="communication-message" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="12/15/2015 15:29:37">
             <stereotypes />
             <documentation>
               <text>
@@ -2700,7 +2700,7 @@
             <communication-message />
           </item>
           <item id="di137719267309241891" iid="cfdb38c688894aeb96f8524ebdfe2fdd" creation-date="12/15/2015 15:01:03" order-index="8" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="474" y1="407" x2="724" y2="508" start-border-pos="0.476635509067112" end-border-pos="0.974637603759766">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="474" y1="407" x2="724" y2="508" start-border-pos="0.471962610880534" end-border-pos="0.981884002685547">
               <points>
                 <point x="474" y="407" />
                 <point x="616" y="465" />
@@ -2778,7 +2778,7 @@
       <abstract-items />
       <sub-models />
     </model>
-    <model id="p501826934883311802" name="Model 3" type="model" namespace="" order-index="3">
+    <model id="p501826934883311802" name="Model 3" type="" namespace="" order-index="3">
       <meta>
         <authors>
           <author> </author>
@@ -2792,7 +2792,7 @@
       <abstract-items />
       <sub-models />
     </model>
-    <model id="p985194170544599658" name="Model 4" type="model" namespace="" order-index="4">
+    <model id="p985194170544599658" name="Model 4" type="" namespace="" order-index="4">
       <meta>
         <authors>
           <author> </author>
