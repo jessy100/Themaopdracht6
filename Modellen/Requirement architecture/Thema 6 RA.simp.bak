@@ -83,7 +83,7 @@
       </counter>
       <counter>
         <item-type stereotype="" type="AbstractElementGroup" />
-        <value>217</value>
+        <value>71</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -1301,7 +1301,7 @@
           </authors>
           <description />
           <creation-date>12/14/2015 11:14:58</creation-date>
-          <change-date>12/15/2015 14:32:34</change-date>
+          <change-date>12/15/2015 15:50:49</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
@@ -1407,7 +1407,7 @@
           <item id="di131883199984532920" cid="GNR006" type="generalization" name="" style-class="" visibility="private" creation-date="12/14/2015 12:18:06">
             <style class="default" />
           </item>
-          <item id="di756375331714911863" cid="C019" type="class" name="Thread" style-class="" visibility="private" creation-date="12/14/2015 11:58:23">
+          <item id="di756375331714911863" cid="C019" type="class" name="RTOS::task" style-class="" visibility="private" creation-date="12/14/2015 11:58:23">
             <style class="default" />
           </item>
           <item id="di734432038128250376" cid="REL014" type="relationship" name="" style-class="" visibility="private" creation-date="12/14/2015 12:02:34">
@@ -1495,6 +1495,12 @@
               <start-role id="" name="" navigability="" association-type="association" visibility="private" />
               <end-role id="" name="" navigability="yes" association-type="association" visibility="private" />
             </relation>
+          </item>
+          <item id="di876097549682266525" cid="C025" type="class" name="std::Queue" style-class="" visibility="private" creation-date="12/14/2015 13:06:06">
+            <style class="default" />
+          </item>
+          <item id="di987485807335787101" cid="C013" type="class" name="WMStatusSensor" style-class="" visibility="private" creation-date="12/14/2015 11:22:55">
+            <style class="default" />
           </item>
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
@@ -1665,17 +1671,17 @@
             <relation from="di477569746811989320" from-iid="c9468a5da4284ab3bd70ceca0ff54807" to="di385332691452419030" to-iid="a974510e85d54d98aaeafa4cdfeb879d" />
           </item>
           <item id="di756375331714911863" iid="ab0d3c4fb31f412f9d25100b1071b1f1" creation-date="12/14/2015 11:58:23" order-index="23" type="entity">
-            <layout ax="-19" ay="427" awidth="146" aheight="22" x="-19" y="427" width="146" height="22" angle="0" />
+            <layout ax="-19" ay="392.5" awidth="146" aheight="49" x="-19" y="392.5" width="146" height="49" angle="0" />
             <class />
           </item>
           <item id="di131883199984532920" iid="cd908aa2d42d4b309460574853916535" creation-date="12/14/2015 12:18:06" order-index="27" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="54" y1="449" x2="54" y2="502" start-border-pos="0.625" end-border-pos="0.125" name-position="10,-10">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="54" y1="502" x2="54" y2="442" start-border-pos="0.125" end-border-pos="0.625" name-position="10,-10">
               <points>
-                <point x="54" y="449" />
                 <point x="54" y="502" />
+                <point x="54" y="442" />
               </points>
             </layout>
-            <relation from="di756375331714911863" from-iid="ab0d3c4fb31f412f9d25100b1071b1f1" to="di751279307214764083" to-iid="d6da48f800da4bb7a890f85b3f1c0c4b" />
+            <relation from="di751279307214764083" from-iid="d6da48f800da4bb7a890f85b3f1c0c4b" to="di756375331714911863" to-iid="ab0d3c4fb31f412f9d25100b1071b1f1" />
           </item>
           <item id="di253977069159435906" iid="f303355a43484ce59b425cb1c6cd2084" creation-date="12/14/2015 12:24:46" order-index="37" type="relation">
             <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25.00001,-15.00001" end-multiplicity-position="25,15" line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="984" y1="261" x2="1080" y2="222" start-border-pos="0.308588171005249" end-border-pos="0.722620293645575" name-position="10,-10">
@@ -1783,6 +1789,14 @@
           </item>
           <item id="di978242810408211418" iid="0073aef228d04633966712abefd77686" creation-date="12/14/2015 13:03:43" order-index="41" type="entity">
             <layout ax="392" ay="-49" awidth="180" aheight="160" x="392" y="-49" width="180" height="160" angle="0" />
+            <class />
+          </item>
+          <item id="di876097549682266525" iid="6455901fc5044a1a9d6ea032bf32076a" creation-date="12/14/2015 13:06:06" order-index="43" type="entity">
+            <layout ax="895" ay="-126.5" awidth="146" aheight="22" x="895" y="-126.5" width="146" height="22" angle="0" />
+            <class />
+          </item>
+          <item id="di987485807335787101" iid="a712fafa1c6d420294921bf1751a5b27" creation-date="12/14/2015 11:22:55" order-index="11" type="entity">
+            <layout ax="405.6667" ay="719" awidth="180" aheight="80" x="405.6667" y="719" width="180" height="80" angle="0" />
             <class />
           </item>
         </layer>
