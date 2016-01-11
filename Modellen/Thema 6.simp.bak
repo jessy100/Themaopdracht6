@@ -83,7 +83,7 @@
       </counter>
       <counter>
         <item-type stereotype="" type="AbstractElementGroup" />
-        <value>340</value>
+        <value>381</value>
       </counter>
       <counter>
         <item-type stereotype="" type="UmlState" />
@@ -297,27 +297,15 @@
     <item id="di576000054507791830" cid="ELEM129" type="group" name="Group" style-class="" visibility="private" creation-date="12/17/2015 13:41:22">
       <style class="default" />
     </item>
-    <item id="di820315112500746110" cid="ELEM022" type="general-transition" name="" style-class="" visibility="private" creation-date="10/08/2015 15:22:22">
-      <style class="default" />
-      <transition guard="currentMode.read () != CHANGE_TIME &amp; selectedDigit.Read() MINUTES" behaviourExpression=" ">
-        <trigger />
-      </transition>
-    </item>
-    <item id="di532438575767187334" cid="ST011" type="state" name="increment minuten gelijk zetten" style-class="" visibility="private" creator="Pda0a9657ca4e4f52842756cab956acf7" creation-date="10/08/2015 15:21:55">
+    <item id="di520349853658640796" cid="ST002" type="state" name="initialisation" style-class="" visibility="private" creation-date="10/08/2015 14:51:04">
       <style class="default" />
       <state-invariant />
-      <actions />
-    </item>
-    <item id="di296206836888599817" cid="ELEM018" type="general-transition" name="" style-class="" visibility="private" creation-date="10/08/2015 15:15:57">
-      <style class="default" />
-      <transition guard="currentMode.read () != CHANGE_TIME &amp; selectedDigit.Read() HOURS" behaviourExpression=" ">
-        <trigger />
-      </transition>
-    </item>
-    <item id="di624934001933104230" cid="ST009" type="state" name="increment uren gelijk zetten" style-class="" visibility="private" creator="Pda0a9657ca4e4f52842756cab956acf7" creation-date="10/08/2015 15:15:54">
-      <style class="default" />
-      <state-invariant />
-      <actions />
+      <actions>
+        <action name="entry" behavior="currentTime - 0;" />
+        <action name="entry" behavior="currentMode.write(SHOW_TIME);" />
+        <action name="entry" behavior="selectedDigit.write(MINUTES);" />
+        <action name="entry" behavior="secClock = now Clock(1 S);" />
+      </actions>
     </item>
   </items>
   <models>
@@ -691,7 +679,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-activity" id="pfcee098377374058ada7e0b570d9eedf_298518282" name="AD Wasprogramma uitvoeren" order-index="3" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false">
+      <diagram type="uml-activity" id="pfcee098377374058ada7e0b570d9eedf_298518282" name="AD Wasprogramma uitvoeren" order-index="3" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false" view-location="-81,-143" zoom="0.6">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -3021,7 +3009,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-statechart" id="pa3bb7035f3cd45bc9ab3f4dd9083e9c7_702834933" name="StateMachineDiagram2" order-index="8" overview-order-index="2" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false">
+      <diagram type="uml-statechart" id="pa3bb7035f3cd45bc9ab3f4dd9083e9c7_702834933" name="StateMachineDiagram2" order-index="8" overview-order-index="2" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false" view-location="-21,0" zoom="0.8">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -3033,23 +3021,13 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           </authors>
           <description />
           <creation-date>01/11/2016 15:58:10</creation-date>
-          <change-date>01/11/2016 16:11:57</change-date>
+          <change-date>01/11/2016 16:34:01</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
         <abstract-items>
           <item id="di575066155488243058" cid="IS002" type="initial-state" name="InitialState2" style-class="" visibility="private" creator="Pda0a9657ca4e4f52842756cab956acf7" creation-date="10/08/2015 14:49:48">
             <style class="default" />
-          </item>
-          <item id="di520349853658640796" cid="ST002" type="state" name="initialisation" style-class="" visibility="private" creation-date="10/08/2015 14:51:04">
-            <style class="default" />
-            <state-invariant />
-            <actions>
-              <action name="entry" behavior="currentTime - 0;" />
-              <action name="entry" behavior="currentMode.write(SHOW_TIME);" />
-              <action name="entry" behavior="selectedDigit.write(MINUTES);" />
-              <action name="entry" behavior="secClock = now Clock(1 S);" />
-            </actions>
           </item>
           <item id="di703963510401314188" cid="DC002" type="decision" name="" style-class="" visibility="private" creator="Pda0a9657ca4e4f52842756cab956acf7" creation-date="10/08/2015 14:52:26">
             <style class="default" />
@@ -3067,7 +3045,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           </item>
           <item id="di966594405809867104" cid="ELEM005" type="general-transition" name="" style-class="" visibility="private" creation-date="10/08/2015 14:53:08">
             <style class="default" />
-            <transition guard="Currentmode.read() == centrifugeren" behaviourExpression=".">
+            <transition guard="Currentmode.read() == centrifugeren" behaviourExpression=" ">
               <trigger />
             </transition>
           </item>
@@ -3097,7 +3075,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           </item>
           <item id="di563584468771227322" cid="ELEM014" type="general-transition" name="" style-class="" visibility="private" creation-date="10/08/2015 15:12:42">
             <style class="default" />
-            <transition guard="currentMode.read() == BLINK_TIME" behaviourExpression=" ">
+            <transition guard="currentMode.read() == KraanOpen" behaviourExpression=" ">
               <trigger />
             </transition>
           </item>
@@ -3117,7 +3095,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
                 </alternate-style>
               </alternate-styles>
             </style>
-            <transition guard="" behaviourExpression=" " />
+            <transition guard="WaterLevel() == DisiredLevel" behaviourExpression=" " />
           </item>
           <item id="di560889988738273925" cid="ELEM016" type="general-transition" name="" style-class="" visibility="private" creation-date="10/08/2015 15:14:16">
             <style class="default" />
@@ -3176,7 +3154,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
                 </alternate-style>
               </alternate-styles>
             </style>
-            <transition guard="currentMode.read() == Verwarmen &amp; Waterlevel == true" behaviourExpression="">
+            <transition guard="currentMode.read() == Verwarmen &amp; Waterlevel() == true" behaviourExpression=" ">
               <trigger />
             </transition>
           </item>
@@ -3193,7 +3171,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
                 </alternate-style>
               </alternate-styles>
             </style>
-            <transition guard="" behaviourExpression=" ">
+            <transition guard="currentMode.read() == TrommelDraaien &amp; Waterlevel() == true" behaviourExpression=" ">
               <trigger />
             </transition>
           </item>
@@ -3219,65 +3197,53 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           </item>
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
-          <item id="di575066155488243058" iid="726dcbefc8414dc38fad6afca99b586c" show-name="false" creation-date="10/08/2015 14:49:48" order-index="3" type="entity">
-            <layout ax="115" ay="307.5" awidth="25" aheight="25" x="115" y="307.5" width="25" height="25" angle="0" name-position="17.5,-10" />
-          </item>
-          <item id="di520349853658640796" iid="4565cb04708e43ee90e6357d9556b1c0" creation-date="10/08/2015 14:51:04" order-index="5" type="entity">
-            <layout ax="236" ay="271" awidth="291" aheight="98" x="236" y="271" width="291" height="98" angle="0" />
-          </item>
           <item id="di889829445809028978" iid="f5f64f4f20cb41dd80fe100bddf35678" creation-date="10/08/2015 15:10:40" order-index="21" type="entity">
-            <layout ax="588" ay="392" awidth="338" aheight="56" x="588" y="392" width="338" height="56" angle="0" />
+            <layout ax="588" ay="392" awidth="329" aheight="57.49063" x="588" y="392" width="329" height="57.49063" angle="0" />
           </item>
           <item id="di703963510401314188" iid="6c188375db984461925fcc3d6ffd9f19" show-name="false" creation-date="10/08/2015 14:52:26" order-index="6" type="entity">
             <layout ax="361" ay="456" awidth="40" aheight="60" x="361" y="456" width="40" height="60" angle="0" name-position="10,-10" />
           </item>
           <item id="di414573983945628329" iid="ba0f901365cd475a901c893d04b892e4" creation-date="10/08/2015 14:52:37" order-index="8" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="382" y1="369" x2="381" y2="456" start-border-pos="0.624824025786619" end-border-pos="0.126129531860352" name-position="10,-10">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="381" y1="306" x2="381" y2="456" start-border-pos="0.625" end-border-pos="0.125" name-position="10,-10">
               <points>
-                <point x="382" y="369" />
+                <point x="381" y="306" />
                 <point x="381" y="456" />
               </points>
             </layout>
             <relation from="di520349853658640796" from-iid="4565cb04708e43ee90e6357d9556b1c0" to="di703963510401314188" to-iid="6c188375db984461925fcc3d6ffd9f19" />
           </item>
           <item id="di486439465995423497" iid="ead7e913facb4f33be78799f218de341" creation-date="10/08/2015 14:52:51" order-index="9" type="entity">
-            <layout ax="174" ay="609" awidth="329" aheight="50" x="174" y="609" width="329" height="50" angle="0" />
+            <layout ax="174" ay="641.5093" awidth="329" aheight="57.49063" x="174" y="641.5093" width="329" height="57.49063" angle="0" />
           </item>
           <item id="di394624111758843163" iid="140ebfa52305461ebb369050a92131d5" creation-date="10/08/2015 15:13:45" order-index="24" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="879" y1="448" x2="1111" y2="500" start-border-pos="0.534606662727672" end-border-pos="0.894092559814453" name-position="10,-10">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="877" y1="449" x2="1110" y2="501" start-border-pos="0.530141859431397" end-border-pos="0.893616994222005" name-position="-73,7">
               <points>
-                <point x="879" y="448" />
-                <point x="1111" y="500" />
+                <point x="877" y="449" />
+                <point x="1110" y="501" />
               </points>
             </layout>
             <relation from="di889829445809028978" from-iid="f5f64f4f20cb41dd80fe100bddf35678" to="di622190768863514725" to-iid="9ac343622d134af899733d34602af8de" />
           </item>
           <item id="di966594405809867104" iid="eda3f65859e2450ab79059ce81fc310c" creation-date="10/08/2015 14:53:08" order-index="10" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="372" y1="502" x2="345" y2="609" start-border-pos="0.679476356506348" end-border-pos="0.130139452345828" name-position="-127,-3" name-width="274">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="374" y1="505" x2="345" y2="642" start-border-pos="0.668817901611328" end-border-pos="0.129592315766587" name-position="-150,29" name-width="274">
               <points>
-                <point x="372" y="502" />
-                <point x="345" y="609" />
+                <point x="374" y="505" />
+                <point x="345" y="642" />
               </points>
             </layout>
             <relation from="di703963510401314188" from-iid="6c188375db984461925fcc3d6ffd9f19" to="di486439465995423497" to-iid="ead7e913facb4f33be78799f218de341" />
           </item>
           <item id="di560889988738273925" iid="401d957cd830474aa3463e1a69d5d42f" creation-date="10/08/2015 15:14:16" order-index="25" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1111" y1="510" x2="742" y2="592" start-border-pos="0.856176884969076" end-border-pos="0.295253117879232" name-position="-66,-22" name-width="234">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1112" y1="512" x2="831" y2="612" start-border-pos="0.844938151041667" end-border-pos="0.186086405374359" name-position="-66,-22" name-width="234">
               <points>
-                <point x="1111" y="510" />
-                <point x="742" y="592" />
+                <point x="1112" y="512" />
+                <point x="831" y="612" />
               </points>
             </layout>
             <relation from="di622190768863514725" from-iid="9ac343622d134af899733d34602af8de" to="di190873352362198238" to-iid="8daf5c1c052e490c935ec258ff892feb" />
           </item>
-          <item id="di431567073805199285" iid="dd4d1745f0294d71bba0660edd062c82" creation-date="10/08/2015 15:00:52" order-index="13" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="140" y1="320" x2="236" y2="320" start-border-pos="0.375" end-border-pos="0.875" name-position="10,-10">
-              <points>
-                <point x="140" y="320" />
-                <point x="236" y="320" />
-              </points>
-            </layout>
-            <relation from="di575066155488243058" from-iid="726dcbefc8414dc38fad6afca99b586c" to="di520349853658640796" to-iid="4565cb04708e43ee90e6357d9556b1c0" />
+          <item id="di575066155488243058" iid="726dcbefc8414dc38fad6afca99b586c" show-name="false" creation-date="10/08/2015 14:49:48" order-index="3" type="entity">
+            <layout ax="110" ay="244.5" awidth="25" aheight="25" x="110" y="244.5" width="25" height="25" angle="0" name-position="17.5,-10" />
           </item>
           <item id="di178678986704936277" iid="a8bbfa770c2242e0aa51ef921bc3ebc8" creation-date="10/08/2015 15:15:03" order-index="27" type="relation">
             <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1057" y1="637" x2="1114" y2="515" start-border-pos="0.073858677655801" end-border-pos="0.834415690104167" name-position="52,13" name-width="279">
@@ -3288,6 +3254,15 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
               </points>
             </layout>
             <relation from="di939258447333264514" from-iid="bacd231657844ce190d5d469b1bcb2ec" to="di622190768863514725" to-iid="9ac343622d134af899733d34602af8de" />
+          </item>
+          <item id="di431567073805199285" iid="dd4d1745f0294d71bba0660edd062c82" creation-date="10/08/2015 15:00:52" order-index="13" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="135" y1="257" x2="236" y2="257" start-border-pos="0.375" end-border-pos="0.875" name-position="10,-10">
+              <points>
+                <point x="135" y="257" />
+                <point x="236" y="257" />
+              </points>
+            </layout>
+            <relation from="di575066155488243058" from-iid="726dcbefc8414dc38fad6afca99b586c" to="di520349853658640796" to-iid="4565cb04708e43ee90e6357d9556b1c0" />
           </item>
           <item id="di238411646990839432" iid="463b102b1103407eae979ac236b4ecac" creation-date="10/08/2015 15:19:56" order-index="31" type="relation">
             <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1069" y1="324" x2="1117" y2="491" start-border-pos="0.653040824915825" end-border-pos="0.935307057698568" name-position="28,2">
@@ -3303,12 +3278,12 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <layout ax="1108" ay="475" awidth="40" aheight="60" x="1108" y="475" width="40" height="60" angle="0" name-position="10,-10" />
           </item>
           <item id="di190873352362198238" iid="8daf5c1c052e490c935ec258ff892feb" creation-date="01/11/2016 16:01:24" order-index="36" type="entity">
-            <layout ax="601.5" ay="583.5" awidth="141" aheight="48" x="601.5" y="583.5" width="141" height="48" angle="0" />
+            <layout ax="586.5" ay="612.1891" awidth="329" aheight="57.49063" x="586.5" y="612.1891" width="329" height="57.49063" angle="0" />
           </item>
           <item id="di452789682772902841" iid="dace561399e64de58f29aa75d8848c58" creation-date="10/08/2015 15:03:55" order-index="15" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="174" y1="633" x2="361" y2="486" start-border-pos="0.877928466796875" end-border-pos="0.874225997924805" name-position="35,16">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="174" y1="648" x2="361" y2="486" start-border-pos="0.97034653046532" end-border-pos="0.874225997924805" name-position="35,16">
               <points>
-                <point x="174" y="633" />
+                <point x="174" y="648" />
                 <point x="58" y="633" />
                 <point x="58" y="489" />
                 <point x="361" y="486" />
@@ -3320,10 +3295,10 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <layout ax="954" ay="637" awidth="348" aheight="99" x="954" y="637" width="348" height="99" angle="0" />
           </item>
           <item id="di563584468771227322" iid="6f147b76d59e45ffa4811837cc3bf07b" creation-date="10/08/2015 15:12:42" order-index="22" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="398" y1="482" x2="597" y2="448" start-border-pos="0.36037228902181" end-border-pos="0.742984568578957" name-position="74,25" name-width="180">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="398" y1="482" x2="592" y2="449" start-border-pos="0.360399881998698" end-border-pos="0.74682018894555" name-position="74,25" name-width="180">
               <points>
                 <point x="398" y="482" />
-                <point x="597" y="448" />
+                <point x="592" y="449" />
               </points>
             </layout>
             <relation from="di703963510401314188" from-iid="6c188375db984461925fcc3d6ffd9f19" to="di889829445809028978" to-iid="f5f64f4f20cb41dd80fe100bddf35678" />
@@ -3332,7 +3307,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <layout ax="954" ay="274" awidth="297" aheight="50" x="954" y="274" width="297" height="50" angle="0" />
           </item>
           <item id="di575337999963775967" iid="06b9340d8cc0402da5adb6c6abe45c40" creation-date="01/11/2016 16:04:52" order-index="38" type="entity">
-            <layout ax="1280" ay="273.75" awidth="241" aheight="50.5" x="1280" y="273.75" width="241" height="50.5" angle="0" />
+            <layout ax="1251" ay="449.75" awidth="241" aheight="50.5" x="1251" y="449.75" width="241" height="50.5" angle="0" />
           </item>
           <item id="di459288645433727760" iid="4e713fc7c8e4454cb676977e47509cd4" creation-date="10/08/2015 15:20:02" order-index="32" type="relation">
             <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1130" y1="478" x2="1154" y2="324" start-border-pos="0.261507924397786" end-border-pos="0.581663189512311" name-position="269,19" name-width="526">
@@ -3345,16 +3320,16 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <relation from="di622190768863514725" from-iid="9ac343622d134af899733d34602af8de" to="di374914613890660999" to-iid="9f231c254b034591bb68463365b51393" />
           </item>
           <item id="di256169311216268877" iid="2adda0dea6394145a7eb4e43eda45156" creation-date="01/11/2016 16:02:06" order-index="37" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="615" y1="584" x2="395" y2="494" start-border-pos="0.0235001584316822" end-border-pos="0.409937032063802" name-position="10,-10">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="682" y1="612" x2="395" y2="494" start-border-pos="0.0723967856549202" end-border-pos="0.409909947713216" name-position="10,-10">
               <points>
-                <point x="615" y="584" />
+                <point x="682" y="612" />
                 <point x="395" y="494" />
               </points>
             </layout>
             <relation from="di190873352362198238" from-iid="8daf5c1c052e490c935ec258ff892feb" to="di703963510401314188" to-iid="6c188375db984461925fcc3d6ffd9f19" />
           </item>
           <item id="di761066588716626503" iid="a0e6ff2094cb42909351c107989abba5" creation-date="10/08/2015 15:20:37" order-index="33" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1137" y1="521" x2="1177" y2="637" start-border-pos="0.441831715901693" end-border-pos="0.160553153904005" name-position="10,-10">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1137" y1="521" x2="1177" y2="637" start-border-pos="0.441831715901693" end-border-pos="0.160553153904005" name-position="150,-18" name-width="304">
               <points>
                 <point x="1137" y="521" />
                 <point x="1229" y="586" />
@@ -3367,9 +3342,9 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <layout ax="116" ay="402" awidth="187" aheight="36" x="116" y="402" width="187" height="36" angle="0" />
           </item>
           <item id="di429347937396379676" iid="f06183f123ec45e49d8fa21447f16ab3" creation-date="01/11/2016 16:05:14" order-index="39" type="comment-connector">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="false" auto-path="" x1="1368" y1="324" x2="1144" y2="500" start-border-pos="0.6585485687889" end-border-pos="0.354166666666667" name-position="10,-10">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="false" auto-path="" x1="1251" y1="488" x2="1144" y2="500" start-border-pos="0.809319071250387" end-border-pos="0.354166666666667" name-position="10,-10">
               <points>
-                <point x="1368" y="324" />
+                <point x="1251" y="488" />
                 <point x="1144" y="500" />
               </points>
             </layout>
@@ -3384,29 +3359,8 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             </layout>
             <relation from="di703963510401314188" from-iid="6c188375db984461925fcc3d6ffd9f19" to="di491361396461866699" to-iid="3e31bcedb9f346e3aa1aa2c6d125790f" />
           </item>
-          <item id="di820315112500746110" iid="9ba16e702dc448779b67af0d6d9e3a2a" creation-date="10/08/2015 15:22:22" order-index="35" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1302" y1="686" x2="1707" y2="686" start-border-pos="0.373737373737374" end-border-pos="0.8775" name-position="123,-37" name-width="643">
-              <points>
-                <point x="1302" y="686" />
-                <point x="1707" y="686" />
-              </points>
-            </layout>
-            <relation from="di939258447333264514" from-iid="bacd231657844ce190d5d469b1bcb2ec" to="di532438575767187334" to-iid="0296b4ca257b4ebdb0ba61c34e12e385" />
-          </item>
-          <item id="di532438575767187334" iid="0296b4ca257b4ebdb0ba61c34e12e385" creation-date="10/08/2015 15:21:55" order-index="34" type="entity">
-            <layout ax="1707" ay="661.5" awidth="345" aheight="50" x="1707" y="661.5" width="345" height="50" angle="0" />
-          </item>
-          <item id="di296206836888599817" iid="fab0c5e6eea348abaea6ca1669674f61" creation-date="10/08/2015 15:15:57" order-index="29" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1148" y1="505" x2="1696" y2="505" start-border-pos="0.375" end-border-pos="0.875" name-position="28,-33" name-width="642">
-              <points>
-                <point x="1148" y="505" />
-                <point x="1696" y="505" />
-              </points>
-            </layout>
-            <relation from="di622190768863514725" from-iid="9ac343622d134af899733d34602af8de" to="di624934001933104230" to-iid="4185c86ac8054745b9ff8644245d5d7d" />
-          </item>
-          <item id="di624934001933104230" iid="4185c86ac8054745b9ff8644245d5d7d" creation-date="10/08/2015 15:15:54" order-index="28" type="entity">
-            <layout ax="1696" ay="480" awidth="345" aheight="50" x="1696" y="480" width="345" height="50" angle="0" />
+          <item id="di520349853658640796" iid="4565cb04708e43ee90e6357d9556b1c0" creation-date="10/08/2015 14:51:04" order-index="5" type="entity">
+            <layout ax="235.5" ay="208" awidth="291" aheight="98" x="235.5" y="208" width="291" height="98" angle="0" />
           </item>
         </layer>
       </diagram>
