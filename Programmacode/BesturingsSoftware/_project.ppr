@@ -1,0 +1,41 @@
+[Config]
+Compilator.FileName=build.bat
+Compilator.SaveAll=1
+Compilator.Capture=1
+Compilator.ParsLog=%F:%L:*
+Compilator.HideOutput=1
+Compilator.ProgSaveAll=0
+Compilator.ProgRunSelection=0
+Compilator.LogType=0
+Prog1=Clean,cmd /C "make clean "
+Prog2=Run,cmd /C "make run "
+DefaultCPIndex=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+[Project tree]
+Project
+	+Files
+		-includes
+		+compile
+			main.cpp
+		+others
+			Makefile
+[Open project files]
+0=main.cpp
+1=Makefile
+2=..\software\libserial\termios.h
+[Selected Project Files]
+Main=
+Selected=..\software\libserial\termios.h
+[main.cpp]
+TopLine=1
+Caret=12,8
+[Makefile]
+TopLine=1
+Caret=42,19
+[..\software\libserial\termios.h]
+TopLine=1
+Caret=1,4

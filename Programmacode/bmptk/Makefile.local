@@ -1,0 +1,28 @@
+#############################################################################
+#
+# file: bmptk/Makefile.local
+#
+# Local definitions for the bmptk makefile
+#
+# If you want to change the definitions below to match 
+# the situation on your PC:
+# COPY THIS FILE TO Makefile.custom AND CHANGE THAT FILE.
+# This way you can overwrite the bmptk files without erasing
+# your changes.
+#
+# This file is in the public domain.
+# 
+#############################################################################
+
+ifeq ($(wildcard C:/Program\ Files\ (x86)/* ),)
+    WPF := C:/Program Files
+else
+    WPF := C:/Program Files (x86)
+endif
+
+GNU-ARM     := C:\Program Files (x86)\GNU Tools ARM Embedded\4.9 2015q1
+MINGW       := C:/Program Files (x86)/mingw-w64/i686-5.2.0-posix-dwarf-rt_v4-rev0/mingw32
+DEVKITPRO   := C:/devkitPro
+FLASHMAGIC  := "$(WPF)/Flash Magic/FM"
+LPC21ISP    := "$(BMPTK)/tools/lpc21-97hr"
+

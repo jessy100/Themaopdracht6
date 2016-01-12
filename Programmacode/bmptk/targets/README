@@ -1,0 +1,11 @@
+file: bmptk/targets/README
+
+Bare Metal Programming Tool Kit targets directory
+
+This directory subdirectories for the supported targets
+
+directories
+   cortex      : ARM Cortex microcontrollers
+   nds         : NintendoDS game console 
+   win         : windows native
+
