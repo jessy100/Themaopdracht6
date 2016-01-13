@@ -10,7 +10,7 @@
 BMPTK      := ../bmptk
 
 # Specify target chip or board or system, default is nds
-TARGET     := db103
+TARGET     := win
 
 # Specify the project name, the default is main (.cpp, .c, or .asm)
 # this is also the main .cpp file to compile
@@ -19,8 +19,8 @@ PROJECT    :=
 
 # Specify project-specific files (other than the main, if any)
 OBJECTS    := 
-SOURCES    :=  libserial.cpp  pRTOS.cpp	libfiber.cpp
-HEADERS    :=  libserial.h 		pRTOS.h   libfiber.h		Protocol.h
+SOURCES    :=  pRTOS.cpp	libfiber.cpp
+HEADERS    :=  pRTOS.h   libfiber.h		Protocol.h
 LIBRARIES  := 
 SEARCH     := ../Software/libserial ../Software/pRTOS/source
 
