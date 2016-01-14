@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>  Wasmachine interface </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="myscript.js" async="false"> </script>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body bgcolor="#ffffff">
+	<div class="row">
+		<div class="wasprogramma">
+			<div id="was_bont" class="wasprogramma-detail">
+				Bonte was
+			</div>
+		</div>
+		<div class="wasprogramma">
+			<div id="was_kook" class="wasprogramma-detail">
+				Kook was
+			</div>
+		</div>
+		<div class="wasprogramma">
+			<div id="was_kook" class="wasprogramma-detail">
+				Zwarte was
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-detail hidden">
+			<div class="element">
+				<div class="element-desc">Temperatuur</div>
+				<div class="element-input"><input type="number" id="temperatuur" min="1" max="120"></div>
+			</div>
+			<div class="element">
+				<div class="element-desc">Inplannen?</div>
+				<div class="element-input"><input type="checkbox" id="inplannen" value=""></div>
+			</div>
+			<div class="element element-inplannen hidden">
+				<div class="element-desc">Tijd</div>
+				<div class="element-input"><input type="text" id="inplan_delay" placeholder="bv 19:30"></div>
+			</div>
+			<div class="element ">
+				<div class="element-desc"><input type="submit" id="submit" value="opslaan">	</div>
+				<div class="element-input"> </div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
