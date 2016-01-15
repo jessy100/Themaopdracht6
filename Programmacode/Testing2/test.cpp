@@ -9,28 +9,55 @@
 #include "libserial.h"
 #include "Protocol.h"
 #include <iostream>
+#include <thread>
+#include "PracticalSocket.h"
+#include "websocket.h"
+#include "broadcaster.h"
 
 using namespace std;
 
 class uart_task : public RTOS::task {
 public:
    uart_task(short prio, const char * name):
-			RTOS::task(prio, name){}
+		RTOS::task(prio, name),
+		commandCh(this, "channel")
+		{
+			receivePool.write(false);
+		}	
+			
+	void writeCommand(uint8_t command){
+		commandCh.write(command);
+	}
+	
+	bool waitReply(){
+		bool b = receivePool.read();
+		if(b){
+			receivePool.write(false);
+		}
+		return b;
+	}
 
 private:
 	LibSerial serial;
+	RTOS::channel <uint8_t, 10> commandCh;
+	RTOS::pool <bool> receivePool;
 	int n;
-	char reply[2] {0,0};
+	int reply = 0;
 	
 private:
 	void writeSerial(){
-		serial.writeChar(DOOR_LOCK_REQ);
-		serial.writeChar(LOCK_CMD);
+		receivePool.write(false);
+		wait(commandCh);
+		serial.writeChar(commandCh.read());
+		wait(commandCh);
+		serial.writeChar(commandCh.read());
 		cout << "klaar met schrijven" << endl;
-		serial.readChar(&reply[0]);
-		sleep(200);
-		serial.readChar(&reply[1]);
-		cout << hex << reply[0] << ' ' << reply[1] << endl;
+		while(serial.peek() < 1){
+			sleep(100);
+		}
+		serial.read(&reply,2);
+		cout << hex << reply << endl;
+		receivePool.write(true);
 	}
 	
    void main (void) {
@@ -58,11 +85,10 @@ private:
 		serial.writeChar(START_CMD);
 		cout << "klaar met schrijven" << endl;
 		while(serial.peek() < 2){
-			cout << "minder dan 2 in recbuffer" << endl;
-			sleep(100);
+			sleep(6000);
 		}
-		serial.read(reply,2);
-		cout << reply[0] << ' ' << reply[1] << endl;
+		serial.read(&reply,2);
+		cout << hex << reply << endl;
 	}
         for (;;) {
             if (n % 10000 == 0) {
@@ -75,12 +101,78 @@ private:
    }
 };
 
-void writeTest (void) {
-	cout << "runt";
-   uart_task uart(20, "UART");
+class Sensor_task : public RTOS::task{
+	public:
+	Sensor_task(short prio, const char* name, uart_task* uart):
+		RTOS::task(prio, name),
+		uart(uart)
+		{}
+		
+	private:
+		uart_task* uart;
+	
+	private:
+		void main(void){
+			for (;;) {
+				cout << "schrijf tempreq in queue" << endl;
+				uart->writeCommand(TEMPERATURE_REQ);
+				uart->writeCommand(STATUS_CMD);
+				sleep(2000 * 1000);
+			}	
+		}
+};
 
-   RTOS::run();
+
+Broadcaster b;
+
+class MyListener : public WebSocketListener{
+public:
+	void onTextMessage( const string& s){
+		b.broadcast(s);
+		cout << "Recieved: " << s << endl;
+		
+	}
+
+	void onClose(WebSocket* ws){
+		b.remove(ws);
+		delete ws;
+	}
+};
+
+MyListener ml;
+
+class Websocket_task : public thread{
+public: 
+	void run() {
+		try {
+			TCPServerSocket servSock(8080);
+			cout << "server running: " << servSock.getLocalAddress().getAddress() << endl;
+			for (;;) {
+				cout << "before accepting websocket" << endl;
+				TCPSocket *sock = servSock.accept();
+				WebSocket* ws = new WebSocket(sock);
+				ws->setListener(&	ml);
+				b.add(ws);
+				cout << "after accepting websocket" << endl;
+			}
+		} 
+		catch (SocketException &e) {
+			cerr << e.what() << endl;           // Report errors to the console
+		}
+	}
+};
+	
+			
+void writeTest () {
+	cout << "runt";
+	uart_task uart(20, "UART");
+	Sensor_task sensor(30, "Sensor", &uart);
+	Websocket_task ws;
+	thread x(&Websocket_task::run,&ws);
+	RTOS::run();
 }
+
+
 
 /******************************************************************************\
  main routine
