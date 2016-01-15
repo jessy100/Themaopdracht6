@@ -20,6 +20,49 @@ struct Requests{
 	uint8_t first, second;
 };
 
+class Sensors{
+public:
+	Sensors(UartCommunicator* uart):
+		uartCom(uart)
+		{}
+	
+protected:
+	UartCommunicator* uartCom
+};
+
+class TempSensor : public Sensors{
+public:
+	TempSensor(){}
+	
+	getTemperature(){
+		Requests req = {TEMPERATURE_REQ, STATUS_CMD};
+		uartCom->writeCommand(req);
+		cout << "Temp = " << uartCom->readReply() << endl;
+	}
+};
+
+class WaterLevel : public Sensors{
+public:
+	WaterLevel(){}
+	
+	getWaterLevel(){
+		Requests req = {WATER_LEVEL_REQ, STATUS_CMD};
+		uartCom->writeCommand(req);
+		cout << "WaterLevel = " << uartCom->readReply() << endl;
+	}
+}
+
+class WMStatus : public Sensors{
+public:
+	WMStatus(){}
+	
+	getWMStatus(){
+		Requests req = {MACHINE_REQ, STATUS_CMD};
+		uartCom->writeCommand(req);
+		cout << "WMStatus = " << uartCom->readReply() << endl;
+	}
+}
+
 class UartCommunicator {
 public:
 	UartCommunicator():
