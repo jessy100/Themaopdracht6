@@ -26,20 +26,20 @@
 # Compiler settings
 CPP = g++
 #CPPFLAGS = -std=c++11 -W -O3 -c -I./source
-CPPFLAGS = -std=c++11 -W -O3 -c -Wall -Wextra -pedantic -Werror -I./source
-LFLAGS =
+CPPFLAGS = -std=c++11 -W -O3 -Wall -Wextra -c -pedantic  -I./source
+LFLAGS = -pthread -lcrypto
 LIBS =
 
 # Object files for the test program
 TEST_OBJS = test.o
 
 # RTOS object files
-RTOS_OBJS = libfiber.o pRTOS.o libserial.o
+RTOS_OBJS = libfiber.o pRTOS.o libserial.o PracticalSocket.o websocket.o broadcaster.o base64.o
 
 all: test
 
 clean:
-	rm test *.o $(RTOS_OBJS)
+	rm test *.o sources/$(RTOS_OBJS)
 
 test: $(TEST_OBJS) $(RTOS_OBJS)
 	$(CPP) $(LFLAGS) -o $@ $(TEST_OBJS) $(RTOS_OBJS)
@@ -51,5 +51,5 @@ test: $(TEST_OBJS) $(RTOS_OBJS)
 	$(CPP) $(CPPFLAGS) $<
 
 # Dependencies
-test.o: test.cpp ./source/pRTOS.h ./source/libfiber.h ./source/libserial.h ./source/Protocol.h
+test.o: test.cpp ./source/pRTOS.h ./source/libfiber.h ./source/libserial.h ./source/Protocol.h ./source/PracticalSocket.h ./source/broadcaster.h ./source/base64.h ./source/uartCommunicator.h ./source/uartTask.h ./source/sensorTask.h ./source/websocketTask.h 
 pRTOS.o: ./source/pRTOS.cpp ./source/pRTOS.h ./source/libfiber.cpp ./source/libfiber.h
