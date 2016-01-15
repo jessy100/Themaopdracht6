@@ -43,6 +43,14 @@
         <item-type stereotype="" type="UmlCompositeState" />
         <value>1</value>
       </counter>
+      <counter>
+        <item-type stereotype="" type="ConcurrencyTask" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="ConcurrencyTimer" />
+        <value>2</value>
+      </counter>
     </entity-names>
     <entity-ids>
       <counter>
@@ -51,7 +59,7 @@
       </counter>
       <counter>
         <item-type stereotype="" type="UmlAssociation" />
-        <value>24</value>
+        <value>25</value>
       </counter>
       <counter>
         <item-type stereotype="" type="UmlRealization" />
@@ -106,12 +114,20 @@
         <value>6</value>
       </counter>
       <counter>
-        <item-type stereotype="" type="AbstractElementGroup" />
-        <value>256</value>
-      </counter>
-      <counter>
         <item-type stereotype="" type="UmlMerge" />
         <value>49</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="AbstractElementGroup" />
+        <value>96</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="ConcurrencyTask" />
+        <value>5</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="ConcurrencyTimer" />
+        <value>3</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -2473,7 +2489,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           </item>
         </layer>
       </diagram>
-      <diagram type="concurrency" id="p404123470450831464" name="ConcurrencyDiagram1" order-index="5" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false">
+      <diagram type="concurrency" id="p404123470450831464" name="ConcurrencyDiagram1" order-index="5" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false" view-location="0,-18" zoom="0.7">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -2485,7 +2501,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           </authors>
           <description />
           <creation-date>12/15/2015 16:33:16</creation-date>
-          <change-date>12/15/2015 16:33:19</change-date>
+          <change-date>01/15/2016 11:08:22</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
@@ -2580,6 +2596,25 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
               </messages>
             </communication-message>
           </item>
+          <item id="di320208844686726918" cid="TSK003" type="concurrency-task" name="MessageBroadcaster" style-class="" visibility="package" change-tracking-state="added" creation-date="01/15/2016 11:06:59">
+            <style class="default" />
+            <communication-lifeline classifier-name="" is-active="false" is-multi-object="false" />
+          </item>
+          <item id="di996741247464731866" cid="TSK004" type="concurrency-task" name="SensorHandler" style-class="" visibility="package" change-tracking-state="added" creation-date="01/15/2016 11:07:26">
+            <style class="default" />
+            <communication-lifeline classifier-name="" is-active="false" is-multi-object="false" />
+          </item>
+          <item id="di490905281860134960" cid="TMR002" type="concurrency-timer" name="PollTimer" style-class="" visibility="package" change-tracking-state="added" creation-date="01/15/2016 11:08:08">
+            <style class="default" />
+            <communication-lifeline classifier-name="" is-active="false" is-multi-object="false" />
+          </item>
+          <item id="di641255449473094510" cid="REL024" type="relationship" name="" style-class="" visibility="package" change-tracking-state="added" creation-date="01/15/2016 11:08:22">
+            <style class="default" />
+            <relation from="di996741247464731866" to="di490905281860134960">
+              <start-role id="" name="" multiplicity=" " navigability="" association-type="association" visibility="private" />
+              <end-role id="" name="" navigability="" association-type="association" visibility="private" />
+            </relation>
+          </item>
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
           <item id="di528188048843700419" iid="0344b8056cd94abd9b1416446227c6b6" creation-date="12/15/2015 14:54:31" order-index="0" type="entity">
@@ -2616,7 +2651,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <communication-message />
           </item>
           <item id="di993142631488459181" iid="a58d6e1d819247d9a92e79eb3b88aafa" creation-date="12/15/2015 15:01:07" order-index="9" type="relation">
-            <layout normal-message-position="0,-30" reverse-message-position="0,30" line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="784" y1="245" x2="1022" y2="347" start-border-pos="0.482352956136068" end-border-pos="0.98235289255778" name-position="10,-10">
+            <layout normal-message-position="0,-30" reverse-message-position="10,-20" line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="784" y1="245" x2="1022" y2="347" start-border-pos="0.482352956136068" end-border-pos="0.98235289255778" name-position="10,-10">
               <points>
                 <point x="784" y="245" />
                 <point x="1022" y="347" />
@@ -2639,7 +2674,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <layout ax="724" ay="93" awidth="50" aheight="50" x="724" y="93" width="50" height="50" angle="0" name-position="-20,-10" />
           </item>
           <item id="di356923231191451736" iid="de4aa6862c6c484eb871b936c34f7518" creation-date="12/15/2015 15:27:55" order-index="12" type="relation">
-            <layout normal-message-position="0,-30" reverse-message-position="0,30" line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="753" y1="217" x2="750" y2="143" start-border-pos="0.122258758544922" end-border-pos="0.619517517089844" name-position="10,-10">
+            <layout normal-message-position="23,-25" reverse-message-position="0,30" line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="753" y1="217" x2="750" y2="143" start-border-pos="0.122258758544922" end-border-pos="0.619517517089844" name-position="10,-10">
               <points>
                 <point x="753" y="217" />
                 <point x="750" y="143" />
@@ -2652,7 +2687,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <layout ax="724" ay="379" awidth="50" aheight="50" x="724" y="379" width="50" height="50" angle="0" name-position="-27,-14" />
           </item>
           <item id="di535535970936556715" iid="c187f67e8f50469f8d7a318b590cc7b6" creation-date="12/15/2015 15:29:37" order-index="14" type="relation">
-            <layout normal-message-position="0,-30" reverse-message-position="0,30" line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="753" y1="505" x2="750" y2="429" start-border-pos="0.122306060791016" end-border-pos="0.619612121582031" name-position="10,-10">
+            <layout normal-message-position="26,-26" reverse-message-position="0,30" line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="753" y1="505" x2="750" y2="429" start-border-pos="0.122306060791016" end-border-pos="0.619612121582031" name-position="10,-10">
               <points>
                 <point x="753" y="505" />
                 <point x="750" y="429" />
@@ -2660,6 +2695,24 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             </layout>
             <relation from="di143493932622651437" from-iid="4840740901b740cdacb7eea8632a3c8b" to="di487656059396421055" to-iid="7117e48374524c4bbe157ca14c3c3cc5" />
             <communication-message />
+          </item>
+          <item id="di320208844686726918" iid="7763eac8466847459f41bd18c34b7ce3" creation-date="01/15/2016 11:06:59" order-index="15" type="entity">
+            <layout ax="296.5" ay="197" awidth="211" aheight="50" x="296.5" y="197" width="211" height="50" angle="0" />
+          </item>
+          <item id="di490905281860134960" iid="08dc347a231f4b45b314e9a93a262c4a" creation-date="01/15/2016 11:08:08" order-index="17" type="entity">
+            <layout ax="557.5" ay="512" awidth="30" aheight="50" x="557.5" y="512" width="30" height="50" angle="0" name-position="0,10" name-anchor="bottom" />
+          </item>
+          <item id="di641255449473094510" iid="f1f1588db8d8407d8ab2bf0c1b8ddc50" creation-date="01/15/2016 11:08:22" order-index="18" type="relation">
+            <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="508" y1="537" x2="558" y2="537" start-border-pos="0.375" end-border-pos="0.875" name-position="10,-10">
+              <points>
+                <point x="508" y="537" />
+                <point x="558" y="537" />
+              </points>
+            </layout>
+            <relation from="di996741247464731866" from-iid="bc26d63b08c6476db71e36e0bb9d6c08" to="di490905281860134960" to-iid="08dc347a231f4b45b314e9a93a262c4a" />
+          </item>
+          <item id="di996741247464731866" iid="bc26d63b08c6476db71e36e0bb9d6c08" creation-date="01/15/2016 11:07:26" order-index="16" type="entity">
+            <layout ax="296.5" ay="512" awidth="211" aheight="50" x="296.5" y="512" width="211" height="50" angle="0" />
           </item>
         </layer>
       </diagram>
@@ -3030,7 +3083,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           <item id="di575066155488243058" cid="IS002" type="initial-state" name="InitialState2" style-class="" visibility="private" creation-date="10/08/2015 14:49:48">
             <style class="default" />
           </item>
-          <item id="di528253944177864524" cid="IS001" type="initial-state" name="InitialState1" style-class="" visibility="private" creator="Pda0a9657ca4e4f52842756cab956acf7" creation-date="10/08/2015 14:43:28">
+          <item id="di528253944177864524" cid="IS001" type="initial-state" name="InitialState1" style-class="" visibility="private" creation-date="10/08/2015 14:43:28">
             <style class="default" />
           </item>
           <item id="di703963510401314188" cid="DC002" type="decision" name="" style-class="" visibility="private" creation-date="10/08/2015 14:52:26">
@@ -3492,6 +3545,9 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
               <trigger />
             </transition>
           </item>
+          <item id="di620958307801147136" cid="ELEM048" type="shape" name="Element2" style-class="" visibility="package" creation-date="01/14/2016 15:11:25">
+            <style class="default" />
+          </item>
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
           <item id="di703963510401314188" iid="6c188375db984461925fcc3d6ffd9f19" show-name="false" creation-date="10/08/2015 14:52:26" order-index="6" type="entity">
@@ -3552,7 +3608,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <layout ax="61.5" ay="150" awidth="25" aheight="25" x="61.5" y="150" width="25" height="25" angle="0" name-position="17.5,-10" />
           </item>
           <item id="di431567073805199285" iid="dd4d1745f0294d71bba0660edd062c82" creation-date="10/08/2015 15:00:52" order-index="13" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="84" y1="386" x2="189" y2="385" start-border-pos="0.369296875" end-border-pos="0.87283552453873" name-position="10,-10">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="84" y1="386" x2="189" y2="385" start-border-pos="0.369297180175781" end-border-pos="0.872835443374958" name-position="10,-10">
               <points>
                 <point x="84" y="386" />
                 <point x="189" y="385" />
@@ -3564,7 +3620,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <layout ax="191" ay="122" awidth="359" aheight="81" x="191" y="122" width="359" height="81" angle="0" />
           </item>
           <item id="di238411646990839432" iid="463b102b1103407eae979ac236b4ecac" creation-date="10/08/2015 15:19:56" order-index="31" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1842" y1="601" x2="1090" y2="719" start-border-pos="0.375000234750601" end-border-pos="0.147416346281478" name-position="-27,-28" name-width="670">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1842" y1="601" x2="1090" y2="719" start-border-pos="0.375000469501202" end-border-pos="0.147416346281478" name-position="-27,-28" name-width="670">
               <points>
                 <point x="1842" y="601" />
                 <point x="1898" y="600.9999" />
@@ -3587,7 +3643,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           <item id="di622190768863514725" iid="9ac343622d134af899733d34602af8de" show-name="false" creation-date="10/08/2015 15:13:38" order-index="23" type="entity">
             <layout ax="1268" ay="719.0655" awidth="40" aheight="60" x="1268" y="719.0655" width="40" height="60" angle="0" name-position="10,-10" />
           </item>
-          <item id="di757062113982233639" iid="f5b3354facc1496d9365060c2de1b121" name="Element2" creation-date="10/08/2015 14:49:52" order-index="4" type="drawing-line">
+          <item id="di620958307801147136" iid="f5b3354facc1496d9365060c2de1b121" name="Element2" creation-date="10/08/2015 14:49:52" order-index="4" type="drawing-line">
             <layout ax="59.5" ay="248" awidth="2103.5" aheight="2" x="59.5" y="245" width="2103.5" height="5" angle="0" />
             <drawing-line start-point="59.5,248" end-point="2162,249" />
             <style class="default" />
@@ -3613,7 +3669,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <relation from="di703963510401314188" from-iid="6c188375db984461925fcc3d6ffd9f19" to="di889829445809028978" to-iid="f5f64f4f20cb41dd80fe100bddf35678" />
           </item>
           <item id="di459288645433727760" iid="4e713fc7c8e4454cb676977e47509cd4" creation-date="10/08/2015 15:20:02" order-index="32" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1299" y1="735" x2="1512" y2="599" start-border-pos="0.194078826904297" end-border-pos="0.882622821514423" name-position="17,-30" name-width="312">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="1299" y1="735" x2="1512" y2="599" start-border-pos="0.194078826904297" end-border-pos="0.882622586763822" name-position="17,-30" name-width="312">
               <points>
                 <point x="1299" y="735" />
                 <point x="1344" y="596.9999" />
