@@ -1,9 +1,39 @@
-#include "uartCommunicator"
+#include "uartCommunicator.h"
+
+enum class Status{ERROR, OPENED, CLOSED, LOCKED, ON, OFF}
+enum class WMStatus{ERROR, HALTED, STOPPED, RUNNING, IDLE}
+
+Status replyToStatus(uint8_t status){
+	switch(status){
+		case 0x01: return Status::OPENED; 	break;
+		case 0x02: return Status::CLOSED; 	break;
+		case 0x04: return Status::LOCKED; 	break;
+		case 0x08: return Status::ON; 		break;
+		case 0x10: return Status::OFF;		break;
+		default: return Status::ERROR;
+	}
+}
+
+WMStatus replyToWMStatus(uint8_t status){
+	switch(status){
+		case 0x01: return WMStatus::HALTED; 	break;
+		case 0x02: return WMStatus::IDLE; 		break;
+		case 0x04: return WMStatus::RUNNING;	break;
+		case 0x08: return WMStatus::STOPPED; 	break;
+		default: return WMStatus::ERROR;
+	}
+}
 
 class WmHardware{
 protected:
 	WmHardware(UartCommunicator* uart):
 		uartCom(uart){}
+		
+	short handleRequest(uint8_t request, uint8_t command){
+		Requests req = {request, command};
+		uartCom->writeCommand(req);
+		return (uartCom->readReply() >> 8);
+	}
 
 	UartCommunicator* uartCom;
 };
@@ -28,10 +58,10 @@ public:
 	}
 	
 private:
-	void getTemperature(){
-		Requests req = {TEMPERATURE_REQ, STATUS_CMD};
-		uartCom->writeCommand(req);
-		cout << "Temp = " << uartCom->readReply() << endl;
+	int getTemperature(){
+		short t = handleRequest(TEMPERATURE_REQ, STATUS_CMD);
+		cout << "Temp = " << t << endl;
+		return t;
 	}
 };
 
@@ -44,10 +74,10 @@ public:
 	}
 	
 private:
-	void getWaterLevel(){
-		Requests req = {WATER_LEVEL_REQ, STATUS_CMD};
-		uartCom->writeCommand(req);
-		cout << "WaterLevel = " << uartCom->readReply() << endl;
+	int getWaterLevel(){
+		short level = handleRequest(WATER_LEVEL_REQ, STATUS_CMD);
+		cout << "WaterLevel = " << level << endl;
+		return level;
 	}
 };
 
@@ -60,10 +90,10 @@ public:
 	}
 	
 private:
-	void getWMStatus(){
-		Requests req = {MACHINE_REQ, STATUS_CMD};
-		uartCom->writeCommand(req);
-		cout << "WMStatus = " << uartCom->readReply() << endl;
+	WMStatus getWMStatus(){
+		short reply = handleRequest(MACHINE_REQ, STATUS_CMD);
+		cout << "WMStatus = " << reply << endl;
+		return replyToWMStatus((reply));
 	}
 };
 
@@ -81,15 +111,14 @@ public:
 		i = i / 25;
 		uint8_t rpm = ((clockwise) ? i : i | 0x80);
 		
-		Requests req = {SET_RPM_REQ, rpm};
-		uartCom->writeCommand(req);
-		cout << "RPM = " << uartCom->readReply() << endl;
+		short reply = handleRequest(SET_RPM_REQ, rpm);
+		cout << "RPM = " << reply << endl;
 	}
 	
-	void getRPM(){
-		Requests req = {GET_RPM_REQ, STATUS_CMD};
-		uartCom->writeCommand(req);
-		cout << "RPMSet = " << uartCom->readReply() << endl;
+	short getRPM(){
+		short reply = handleRequest(GET_RPM_REQ, STATUS_CMD);
+		cout << "RPMSet = " << reply << endl;
+		return reply;
 	}
 };
 
@@ -98,16 +127,15 @@ public:
 	DoorLock(UartCommunicator* uart):
 		WmHardware{uart}{}
 	
-	void getDoorLock(){
-		Requests req = {DOOR_LOCK_REQ, STATUS_CMD};
-		uartCom->writeCommand(req);
-		cout << "DoorLock = " << uartCom->readReply() << endl;
+	Status getDoorLock(){
+		short reply = handleRequest(DOOR_LOCK_REQ, STATUS_CMD);
+		cout << "DoorLock = " << reply << endl;
+		return replyToStatus(reply);
 	}
 	
 	void setDoorLock(bool lock){
-		Requests req = {DOOR_LOCK_REQ, ((lock) ? LOCK_CMD : UNLOCK_CMD)};
-		uartCom->writeCommand(req);
-		cout << "DoorLockSet = " << uartCom->readReply() << endl;
+		short reply = handleRequest(DOOR_LOCK_REQ, ((lock) ? LOCK_CMD : UNLOCK_CMD);
+		cout << "DoorLockSet = " << reply << endl;
 	}
 };
 
@@ -116,16 +144,15 @@ public:
 	WaterValve(UartCommunicator* uart):
 		WmHardware{uart}{}
 		
-	void getWaterValve(){
-		Requests req = {WATER_VALVE_REQ, STATUS_CMD};
-		uartCom->writeCommand(req);
-		cout << "WaterValve = " << uartCom->readReply() << endl;
+	Status getWaterValve(){
+		short reply = handleRequest(WATER_VALVE_REQ, STATUS_CMD);
+		cout << "WaterValve = " << reply << endl;
+		return replyToStatus(reply);
 	}
 	
 	void setWaterValve(bool open){
-		Requests req = {WATER_VALVE_REQ, ((open) ? OPEN_CMD : CLOSE_CMD)};
-		uartCom->writeCommand(req);
-		cout << "WaterValveSet = " << uartCom->readReply() << endl;
+		short reply = handleRequest(WATER_VALVE_REQ, ((open) ? OPEN_CMD : CLOSE_CMD));
+		cout << "WaterValveSet = " << reply << endl;
 	}
 };
 
@@ -134,16 +161,15 @@ public:
 	Pump(UartCommunicator* uart):
 		WmHardware{uart}{}
 		
-	void getPump(){
-		Requests req = {PUMP_REQ, STATUS_CMD};
-		uartCom->writeCommand(req);
-		cout << "PumpStatus = " << uartCom->readReply() << endl;
+	Status getPump(){
+		short reply = handleRequest(PUMP_REQ, STATUS_CMD);
+		cout << "PumpStatus = " << reply << endl;
+		return replyToStatus(reply);
 	}
 	
 	void setPump(bool on){
-		Requests req = {PUMP_REQ, ((on) ? ON_CMD : OFF_CMD)};
-		uartCom->writeCommand(req);
-		cout << "PumpStatusSet = " << uartCom->readReply() << endl;
+		short reply = handleRequest(PUMP_REQ, ((on) ? ON_CMD : OFF_CMD));
+		cout << "PumpStatusSet = " << reply << endl;
 	}
 };
 
@@ -152,16 +178,15 @@ public:
 	SoapDispenser(UartCommunicator* uart):
 		WmHardware{uart}{}
 	
-	void getSoapDispenser(){
-		Requests req = {SOAP_DISPENSER_REQ, STATUS_CMD};
-		uartCom->writeCommand(req);
-		cout << "SoapDispenser = " << uartCom->readReply() << endl;
+	Status getSoapDispenser(){
+		short reply = handleRequest(SOAP_DISPENSER_REQ, STATUS_CMD);
+		cout << "SoapDispenser = " << reply << endl;
+		return replyToStatus(reply);
 	}
 	
 	void setSoapDispenser(bool open){
-		Requests req = {SOAP_DISPENSER_REQ, ((open) ? OPEN_CMD : CLOSE_CMD)};
-		uartCom->writeCommand(req);
-		cout << "SoapDispenserSet = " << uartCom->readReply() << endl;
+		short reply = handleRequest(SOAP_DISPENSER_REQ, ((open) ? OPEN_CMD : CLOSE_CMD));
+		cout << "SoapDispenserSet = " << reply << endl;
 	}	
 };
 
@@ -170,16 +195,15 @@ public:
 	HeatingUnit(UartCommunicator* uart):
 		WmHardware{uart}{}
 	
-	void getHeatingUnit(){
-		Requests req = {HEATING_UNIT_REQ , STATUS_CMD};
-		uartCom->writeCommand(req);
-		cout << "SoapDispenser = " << uartCom->readReply() << endl;
+	Status getHeatingUnit(){
+		short reply = handleRequest(HEATING_UNIT_REQ , STATUS_CMD);
+		cout << "HeatingUnit = " << reply << endl;
+		return replyToStatus(reply);
 	}
 	
 	void setHeatingUnit(bool on){
-		Requests req = {HEATING_UNIT_REQ , ((on) ? OPEN_CMD : CLOSE_CMD)};
-		uartCom->writeCommand(req);
-		cout << "SoapDispenserSet = " << uartCom->readReply() << endl;
+		short reply = handleRequest(HEATING_UNIT_REQ , ((on) ? OPEN_CMD : CLOSE_CMD));
+		cout << "HeatingUnitSet = " << reply << endl;
 	}	
 };
 

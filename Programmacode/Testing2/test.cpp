@@ -24,7 +24,7 @@ int main( void )
 {
 	cout << "runt";
 	UartCommunicator uartCom;
-	uart_task uart(20, "UART", &uartCom);
+	Uart_task uart(20, "UART", &uartCom);
 	Sensor_task sensor(30, "Sensor", &uartCom);
 	Websocket_task ws;
 	thread x(&Websocket_task::run,&ws);

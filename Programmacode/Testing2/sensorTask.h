@@ -21,7 +21,8 @@ class Sensor_task : public RTOS::task{
 				Requests req = { TEMPERATURE_REQ, STATUS_CMD};
 				uartCom->writeCommand(req);
 				sleep(2000 * 1000);
-				cout << uartCom->readReply() << endl;
+				short reply = uartCom->readReply();
+				cout << dec << (reply >> 8) << hex << endl;
 			}	
 		}
 };
