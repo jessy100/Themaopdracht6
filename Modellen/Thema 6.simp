@@ -127,7 +127,7 @@
       </counter>
       <counter>
         <item-type stereotype="" type="AbstractElementGroup" />
-        <value>185</value>
+        <value>81</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -3556,6 +3556,9 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           <item id="di785143261522268154" cid="ELEM064" type="shape" name="Element2" style-class="" visibility="package" creation-date="01/15/2016 12:00:00">
             <style class="default" />
           </item>
+          <item id="di255104921761265482" cid="ELEM065" type="shape" name="Element2" style-class="" visibility="package" creation-date="01/18/2016 11:21:10">
+            <style class="default" />
+          </item>
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
           <item id="di703963510401314188" iid="6c188375db984461925fcc3d6ffd9f19" show-name="false" creation-date="10/08/2015 14:52:26" order-index="6" type="entity">
@@ -3651,7 +3654,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
           <item id="di622190768863514725" iid="9ac343622d134af899733d34602af8de" show-name="false" creation-date="10/08/2015 15:13:38" order-index="23" type="entity">
             <layout ax="1268" ay="719.0655" awidth="40" aheight="60" x="1268" y="719.0655" width="40" height="60" angle="0" name-position="10,-10" />
           </item>
-          <item id="di785143261522268154" iid="f5b3354facc1496d9365060c2de1b121" name="Element2" creation-date="10/08/2015 14:49:52" order-index="4" type="drawing-line">
+          <item id="di255104921761265482" iid="f5b3354facc1496d9365060c2de1b121" name="Element2" creation-date="10/08/2015 14:49:52" order-index="4" type="drawing-line">
             <layout ax="59.5" ay="248" awidth="2103.5" aheight="2" x="59.5" y="245" width="2103.5" height="5" angle="0" />
             <drawing-line start-point="59.5,248" end-point="2162,249" />
             <style class="default" />
@@ -3811,9 +3814,9 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <style class="default" />
             <state-invariant />
             <actions>
-              <action name="setProgrammain(progId int)" behavior="wasProgChan.write(ProgID);" />
-              <action name="getProgramma()" behavior="curProgMut.wait(); prog=curProgPool.read(); curProgMut.signal(); return prog;" />
-              <action name="getProgrammaPhase()" behavior="curPhaseMut.wait(); phase=curPhasePool.read(); curPhaseMut.signal(); return phase;" />
+              <action name="setProgrammain(progId int)" behavior="wasProgChnl.write(progId);" />
+              <action name="getHuidigProgramma()" behavior="{currentProgrammaMut.wait();i = currentProgrammaPool.read(); currentProgrammaMut.signal();return i}" />
+              <action name="getHuidigeFase()" behavior="{currentFaseMut.wait();i = currentFasePool.read(); currentFase.signal();return i}" />
             </actions>
           </item>
           <item id="di953073627560329023" cid="ELEM069" type="general-transition" name="" style-class="" visibility="package" change-tracking-state="added" creation-date="01/15/2016 12:39:31">
@@ -3875,6 +3878,9 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <style class="default" />
             <transition guard="" behaviourExpression="" />
           </item>
+          <item id="di227347553550031265" cid="ELEM071" type="shape" name="Element2" style-class="" visibility="package" creation-date="01/18/2016 11:21:10">
+            <style class="default" />
+          </item>
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
           <item id="di259066251438039197" iid="af3eb2a3fb2140748bad57d8c792027b" show-name="false" creation-date="10/08/2015 14:49:48" order-index="3" type="entity">
@@ -3893,18 +3899,18 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <relation from="di259066251438039197" from-iid="af3eb2a3fb2140748bad57d8c792027b" to="di166355607340185364" to-iid="d5c653cb8d7a428797809bc2c416cbf1" />
           </item>
           <item id="di920198946537485256" iid="19bfe9bf35834d94bc968ff604bb0081" creation-date="10/08/2015 14:43:33" order-index="1" type="entity">
-            <layout ax="191" ay="122" awidth="715" aheight="95" x="191" y="122" width="715" height="95" angle="0" />
+            <layout ax="191" ay="107" awidth="715" aheight="111" x="191" y="107" width="715" height="111" angle="0" />
           </item>
           <item id="di827087766375282269" iid="deb96437bba54feab777384fc19cb218" creation-date="10/08/2015 14:44:47" order-index="2" type="relation">
-            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="86" y1="162" x2="191" y2="164" start-border-pos="0.372025299072266" end-border-pos="0.889540300871197" name-position="10,-10">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" auto-path="" x1="86" y1="162" x2="191" y2="162" start-border-pos="0.37" end-border-pos="0.876126126126126" name-position="10,-10">
               <points>
                 <point x="86" y="162" />
-                <point x="191" y="164" />
+                <point x="191" y="162" />
               </points>
             </layout>
             <relation from="di335483064901334541" from-iid="7a7963c20cde4952be1dfe4cbde1e76a" to="di920198946537485256" to-iid="19bfe9bf35834d94bc968ff604bb0081" />
           </item>
-          <item id="di785143261522268154" iid="6e92f8b516654123935407fc209f33da" name="Element2" creation-date="10/08/2015 14:49:52" order-index="4" type="drawing-line">
+          <item id="di227347553550031265" iid="6e92f8b516654123935407fc209f33da" name="Element2" creation-date="10/08/2015 14:49:52" order-index="4" type="drawing-line">
             <layout ax="59.5" ay="248" awidth="2103.5" aheight="2" x="59.5" y="245" width="2103.5" height="5" angle="0" />
             <drawing-line start-point="59.5,248" end-point="2162,249" />
             <style class="default" />
