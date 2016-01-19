@@ -24,7 +24,6 @@ private:
 		Requests req = uartCom->readCommand();
 		serial.writeChar(req.first);
 		serial.writeChar(req.second);
-		cout << "klaar met schrijven" << endl;
 		while(serial.peek() < 2){
 			sleep(1000);
 		}

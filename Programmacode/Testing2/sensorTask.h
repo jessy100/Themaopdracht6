@@ -26,7 +26,6 @@ private:
 		for (;;) {
 			//call all updates
 			for (std::vector<UpdatingSensor*>::iterator it = sensors.begin(); it != sensors.end(); ++it){
-				cout << "roept SensorUpdate aan" << endl;
 				(*it)->update();
 				sleep(500 MS);
 			}

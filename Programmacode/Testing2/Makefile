@@ -26,7 +26,7 @@
 # Compiler settings
 CPP = g++
 #CPPFLAGS = -std=c++11 -W -O3 -c -I./source
-CPPFLAGS = -std=c++11 -W -O3 -Wall -Wextra -c -pedantic  -I./source
+CPPFLAGS = -std=c++11 -W -O3 -c -pedantic  -I./source
 LFLAGS = -pthread -lcrypto
 LIBS =
 
@@ -51,5 +51,5 @@ test: $(TEST_OBJS) $(RTOS_OBJS)
 	$(CPP) $(CPPFLAGS) $<
 
 # Dependencies
-test.o: test.cpp uartCommunicator.h uartTask.h sensorTask.h UpdatingSensor.h Sensor.h ./source/pRTOS.h ./source/libfiber.h ./source/libserial.h ./source/Protocol.h ./source/PracticalSocket.h ./source/broadcaster.h ./source/base64.h ./source/websocketTask.h 
+test.o: test.cpp uartCommunicator.h uartTask.h sensorTask.h Sensor.h wasprogrammaTask.h ./source/UpdatingSensor.h ./source/broadcaster.h websocketTask.h ./source/pRTOS.h ./source/libfiber.h ./source/libserial.h ./source/Protocol.h ./source/PracticalSocket.h  ./source/base64.h  
 pRTOS.o: ./source/pRTOS.cpp ./source/pRTOS.h ./source/libfiber.cpp ./source/libfiber.h

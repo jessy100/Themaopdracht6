@@ -81,26 +81,29 @@ void WebSocket::setListener(WebSocketListener* l){
 	theListener = l;
 }
 
+
+
 void WebSocket::handleMessage(const string &message) throw (WebSocketException, SocketException){
     //message is the recieved request_string
 
     string myText(message);
     istringstream iss(myText);
-    string token;
-    while (getline(iss, token, '-'))
-    {
-        if(token == "START_WAS"){
-            commands.push(message);
+    string token, type_req, type_was, temp, delay;
 
-            iss.str("");
-        }else if(token == "GET_DATA"){
-            //request_Data;
-            commands.push(message);
-            iss.str("");
-        }else{
-            //return bad requeste
-        }
-        cout << "tok:" << token << std::endl;
+
+    iss >> type_req;
+    cout << type_req << "\n";
+
+    if(type_req == "START_WAS"){
+    	iss >> type_was;
+    	iss >> temp;
+    	iss >> delay;
+    	commands.push(type_was);
+    	commands.push(temp);
+    	commands.push(delay);
+    	
+    }else if(type_req == "DATA"){
+
     }
 }
 //stuur een closeframe

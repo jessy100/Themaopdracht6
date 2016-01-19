@@ -31,11 +31,14 @@ WMStatus replyToWMStatus(uint8_t status){
 class WmHardware{
 protected:
 	WmHardware(UartCommunicator* uart):
-		uartCom(uart){}
+		uartCom(uart)
+		{}
 		
 	short handleRequest(uint8_t request, uint8_t command){
+		cout << "gaat requesten" << endl;
 		Requests req = {request, command};
-		uartCom->writeCommand(req);
+		uartCom->writeCommand(req);//{sleep(100 MS); cout << "sdfkfldskfd" << endl;}
+		cout << "request gelukt" << endl;
 		return (uartCom->readReply() >> 8);
 	}
 
@@ -101,11 +104,11 @@ private:
 		return replyToWMStatus((reply));
 	}
 };
-/*
+
 class Trommel : public Sensor{
 public:
-	Trommel(UartCommunicator& uart):
-		Sensor{uart}{}
+	Trommel(UartCommunicator* uart):
+		Sensor(uart){}
 		
 	void update(){
 		getRPM();
@@ -129,8 +132,8 @@ public:
 
 class DoorLock : public WmHardware{
 public:
-	DoorLock(UartCommunicator& uart):
-		WmHardware{uart}{}
+	DoorLock(UartCommunicator* uart):
+		WmHardware(uart){}
 	
 	Status getDoorLock(){
 		short reply = handleRequest(DOOR_LOCK_REQ, STATUS_CMD);
@@ -146,8 +149,8 @@ public:
 
 class WaterValve : public WmHardware{
 public:
-	WaterValve(UartCommunicator& uart):
-		WmHardware{uart}{}
+	WaterValve(UartCommunicator* uart):
+		WmHardware(uart){}
 		
 	Status getWaterValve(){
 		short reply = handleRequest(WATER_VALVE_REQ, STATUS_CMD);
@@ -163,8 +166,8 @@ public:
 
 class Pump : public WmHardware{
 public:
-	Pump(UartCommunicator& uart):
-		WmHardware{uart}{}
+	Pump(UartCommunicator* uart):
+		WmHardware(uart){}
 		
 	Status getPump(){
 		short reply = handleRequest(PUMP_REQ, STATUS_CMD);
@@ -180,8 +183,8 @@ public:
 
 class SoapDispenser : public WmHardware{
 public:
-	SoapDispenser(UartCommunicator& uart):
-		WmHardware{uart}{}
+	SoapDispenser(UartCommunicator* uart):
+		WmHardware(uart){}
 	
 	Status getSoapDispenser(){
 		short reply = handleRequest(SOAP_DISPENSER_REQ, STATUS_CMD);
@@ -197,8 +200,8 @@ public:
 
 class HeatingUnit : public WmHardware{
 public:
-	HeatingUnit(UartCommunicator& uart):
-		WmHardware{uart}{}
+	HeatingUnit(UartCommunicator* uart):
+		WmHardware(uart){}
 	
 	Status getHeatingUnit(){
 		short reply = handleRequest(HEATING_UNIT_REQ , STATUS_CMD);
@@ -211,7 +214,6 @@ public:
 		cout << "HeatingUnitSet = " << reply << endl;
 	}	
 };
-*/
 
 #endif
 

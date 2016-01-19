@@ -24,17 +24,31 @@
 \******************************************************************************/
 int main( void )
 {
+	Broadcaster b;
+	
 	cout << "runt";
 	UartCommunicator uartCom;
 	TempSensor tempSensor(&uartCom);
 	WaterLevel waterLevel(&uartCom);
+	WMStatusSensor wmStatusSensor(&uartCom);
+	Trommel trommel(&uartCom);
+	DoorLock doorLock(&uartCom);
+	WaterValve waterValve(&uartCom);
+	/*
+	Pump pump(&uartCom);
+	SoapDispenser(&uartCom);
+	HeatingUnit(&uartCom);
+	*/
 	Uart_task uart(20, "UART", &uartCom);
-	
 	Sensor_task sensor(30, "SensorHandler");
-	sensor.addSensor(&tempSensor);
-	sensor.addSensor(&waterLevel);	
 	
-	Websocket_task ws;
+	sensor.addSensor(&tempSensor);
+	sensor.addSensor(&waterLevel);
+	sensor.addSensor(&wmStatusSensor);
+	sensor.addSensor(&trommel);
+	
+	Websocket_task ws(b);
+	WasProgrammaTask wasprogramma(40, "Wasprogramma", &uartCom, b, &waterValve);
 	thread x(&Websocket_task::run,&ws);
 	RTOS::run();
 	return 0;

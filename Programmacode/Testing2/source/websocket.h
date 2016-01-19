@@ -6,7 +6,6 @@
 #include <string>
 #include <queue>
 
-
 using namespace std;
 
 class WebSocketException : public std::runtime_error {
@@ -33,6 +32,8 @@ public:
 	void setListener(WebSocketListener*);
 	void handleMessage(const string &message) throw (WebSocketException, SocketException);
 	string getForeignAddress() { return sock->getForeignAddress().getAddress(); }
+	int getMessageCount(){ return commands.size();}
+	queue<string> *getMessages(){ return &commands; }
 
 private:
 	TCPSocket* sock;
@@ -47,8 +48,7 @@ private:
 	void handleConnection() ;
 	void sendClose(const char*, size_t) throw (SocketException);
 	void sendPong(const char*, size_t) throw (SocketException);
-    queue <string> commands;
-
+    queue<string> commands;
 };
 
 class WebSocketListener

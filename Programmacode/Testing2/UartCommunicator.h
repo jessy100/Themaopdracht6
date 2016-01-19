@@ -16,10 +16,17 @@ public:
 	UartCommunicator():
 		mailboxIn("mailbox"),
 		mailboxOut("mailbox")
+		//mailMutex("Mutex")
 	{}
 	
 	void writeCommand(Requests req){
-		mailboxIn.write(req);
+		//mailMutex.wait();
+		//if(b == false){
+			//b = true;
+			mailboxIn.write(req);
+		//}
+		//mailMutex.signal();
+		//return b;
 	}
 	
 	Requests readCommand(){ 
@@ -31,10 +38,16 @@ public:
 	}
 	
 	short readReply(){
-		return mailboxOut.read();
+		//mailMutex.wait();
+		//b = false;
+		short ret = mailboxOut.read();
+		//mailMutex.signal();
+		return ret;
 	}
 	
 private:
+	//bool  b = false;
+	//RTOS::mutex mailMutex;
 	RTOS::mailbox<Requests> mailboxIn;
 	RTOS::mailbox<short> mailboxOut;
 };

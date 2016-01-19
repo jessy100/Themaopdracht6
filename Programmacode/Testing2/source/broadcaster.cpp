@@ -29,3 +29,14 @@ void Broadcaster::broadcast(const string& message){
 		(*it)->handleMessage(message);
 }
 
+bool Broadcaster::CheckForMessages(){
+	std::lock_guard<std::mutex> lock(mutex);
+	for (std::list<WebSocket*>::iterator it=theList.begin(); it!=theList.end(); ++it){
+		if((*it)->getMessageCount() != 0){
+			tempWS = *it;
+			return true;
+		}return false;
+
+	}		
+}
+	
