@@ -27,11 +27,11 @@ public:
 		mailboxOut.write(n);
 	}
 	
-	int readReply(){
+	short readReply(){
 		return mailboxOut.read();
 	}
 	
 private:
 	RTOS::mailbox<Requests> mailboxIn;
-	RTOS::mailbox<int> mailboxOut;
+	RTOS::mailbox<short> mailboxOut;
 };

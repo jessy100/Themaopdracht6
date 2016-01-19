@@ -4,9 +4,9 @@
 
 using namespace std;
 
-class uart_task : public RTOS::task{
+class Uart_task : public RTOS::task{
 public:
-	uart_task(short prio, const char * name, UartCommunicator* uartCom):
+	Uart_task(short prio, const char * name, UartCommunicator* uartCom):
 		RTOS::task(prio, name),
 		uartCom(uartCom)
 		{}
