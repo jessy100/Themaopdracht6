@@ -1,3 +1,6 @@
+#ifndef _UARTCOMMUNICATOR_H
+#define _UARTCOMMUNICATOR_H
+
 #include <iostream>
 #include <thread>
 
@@ -35,3 +38,5 @@ private:
 	RTOS::mailbox<Requests> mailboxIn;
 	RTOS::mailbox<short> mailboxOut;
 };
+
+#endif

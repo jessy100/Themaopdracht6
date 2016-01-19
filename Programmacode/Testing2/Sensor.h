@@ -1,26 +1,30 @@
-#include "uartCommunicator.h"
+#ifndef _SENSOR_H
+#define _SENSOR_H
 
-enum class Status{ERROR, OPENED, CLOSED, LOCKED, ON, OFF}
-enum class WMStatus{ERROR, HALTED, STOPPED, RUNNING, IDLE}
+#include "uartCommunicator.h"
+#include "UpdatingSensor.h"
+
+enum class Status{eERROR, eOPENED, eCLOSED, eLOCKED, eON, eOFF};
+enum class WMStatus{eERROR, eHALTED, eSTOPPED, eRUNNING, eIDLE};
 
 Status replyToStatus(uint8_t status){
 	switch(status){
-		case 0x01: return Status::OPENED; 	break;
-		case 0x02: return Status::CLOSED; 	break;
-		case 0x04: return Status::LOCKED; 	break;
-		case 0x08: return Status::ON; 		break;
-		case 0x10: return Status::OFF;		break;
-		default: return Status::ERROR;
+		case 0x01: return Status::eOPENED; 	break;
+		case 0x02: return Status::eCLOSED; 	break;
+		case 0x04: return Status::eLOCKED; 	break;
+		case 0x08: return Status::eON; 		break;
+		case 0x10: return Status::eOFF;		break;
+		default: return Status::eERROR;
 	}
 }
 
 WMStatus replyToWMStatus(uint8_t status){
 	switch(status){
-		case 0x01: return WMStatus::HALTED; 	break;
-		case 0x02: return WMStatus::IDLE; 		break;
-		case 0x04: return WMStatus::RUNNING;	break;
-		case 0x08: return WMStatus::STOPPED; 	break;
-		default: return WMStatus::ERROR;
+		case 0x01: return WMStatus::eHALTED; 	break;
+		case 0x02: return WMStatus::eIDLE; 		break;
+		case 0x04: return WMStatus::eRUNNING;	break;
+		case 0x08: return WMStatus::eSTOPPED; 	break;
+		default: return WMStatus::eERROR;
 	}
 }
 
@@ -38,20 +42,19 @@ protected:
 	UartCommunicator* uartCom;
 };
 
-class Sensor : public WmHardware{
+class Sensor : public WmHardware, public UpdatingSensor{
 public:
-	virtual void update(){
-	}
 	
 protected:
 	Sensor(UartCommunicator* uart):
-		WmHardware{uart}
+		WmHardware(uart)
 		{}
 };
 
 class TempSensor : public Sensor{
 public:
-	TempSensor(UartCommunicator* uart){}
+	TempSensor(UartCommunicator* uart):
+		Sensor(uart){}
 	
 	void update(){
 		getTemperature();
@@ -67,7 +70,8 @@ private:
 
 class WaterLevel : public Sensor{
 public:
-	WaterLevel(UartCommunicator* uart){}
+	WaterLevel(UartCommunicator* uart):
+		Sensor(uart){}
 	
 	void update(){
 		getWaterLevel();
@@ -81,9 +85,10 @@ private:
 	}
 };
 
-class WMStatus : public Sensor{
+class WMStatusSensor : public Sensor{
 public:
-	WMStatus(UartCommunicator* uart){}
+	WMStatusSensor(UartCommunicator* uart):
+		Sensor(uart){}
 	
 	void update(){
 		getWMStatus();
@@ -96,10 +101,10 @@ private:
 		return replyToWMStatus((reply));
 	}
 };
-
+/*
 class Trommel : public Sensor{
 public:
-	Trommel(UartCommunicator* uart):
+	Trommel(UartCommunicator& uart):
 		Sensor{uart}{}
 		
 	void update(){
@@ -124,7 +129,7 @@ public:
 
 class DoorLock : public WmHardware{
 public:
-	DoorLock(UartCommunicator* uart):
+	DoorLock(UartCommunicator& uart):
 		WmHardware{uart}{}
 	
 	Status getDoorLock(){
@@ -134,14 +139,14 @@ public:
 	}
 	
 	void setDoorLock(bool lock){
-		short reply = handleRequest(DOOR_LOCK_REQ, ((lock) ? LOCK_CMD : UNLOCK_CMD);
+		short reply = handleRequest(DOOR_LOCK_REQ, ((lock) ? LOCK_CMD : UNLOCK_CMD));
 		cout << "DoorLockSet = " << reply << endl;
 	}
 };
 
 class WaterValve : public WmHardware{
 public:
-	WaterValve(UartCommunicator* uart):
+	WaterValve(UartCommunicator& uart):
 		WmHardware{uart}{}
 		
 	Status getWaterValve(){
@@ -158,7 +163,7 @@ public:
 
 class Pump : public WmHardware{
 public:
-	Pump(UartCommunicator* uart):
+	Pump(UartCommunicator& uart):
 		WmHardware{uart}{}
 		
 	Status getPump(){
@@ -175,7 +180,7 @@ public:
 
 class SoapDispenser : public WmHardware{
 public:
-	SoapDispenser(UartCommunicator* uart):
+	SoapDispenser(UartCommunicator& uart):
 		WmHardware{uart}{}
 	
 	Status getSoapDispenser(){
@@ -192,7 +197,7 @@ public:
 
 class HeatingUnit : public WmHardware{
 public:
-	HeatingUnit(UartCommunicator* uart):
+	HeatingUnit(UartCommunicator& uart):
 		WmHardware{uart}{}
 	
 	Status getHeatingUnit(){
@@ -206,6 +211,9 @@ public:
 		cout << "HeatingUnitSet = " << reply << endl;
 	}	
 };
+*/
+
+#endif
 
 
 
