@@ -1,3 +1,6 @@
+#ifndef _UARTTASK_H
+#define _UARTTASK_H
+
 #include <iostream>
 #include <thread>
 #include "uartCommunicator.h"
@@ -64,3 +67,5 @@ private:
 		}
 	}
 };
+
+#endif
