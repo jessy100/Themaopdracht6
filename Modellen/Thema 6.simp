@@ -143,7 +143,7 @@
       </counter>
       <counter>
         <item-type stereotype="" type="AbstractElementGroup" />
-        <value>196</value>
+        <value>199</value>
       </counter>
       <counter>
         <item-type stereotype="" type="ConcurrencyQueue" />
@@ -3881,7 +3881,7 @@ beginnend met een timer van 0s -&gt; wasprogramma start gelijk...</comment>
             <style class="default" />
             <state-invariant />
             <actions>
-              <action name="setProgrammain(progId int)" behavior="wasProgChnl.write(progId);" />
+              <action name="setProgrammaIn(progId int)" behavior="wasProgChnl.write(progId);" />
               <action name="getHuidigProgramma()" behavior="{currentProgrammaMut.wait();i = currentProgrammaPool.read(); currentProgrammaMut.signal();return i}" />
               <action name="getHuidigeFase()" behavior="{currentFaseMut.wait();i = currentFasePool.read(); currentFase.signal();return i}" />
             </actions>
