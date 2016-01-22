@@ -31,6 +31,7 @@ public:
 	void close();
 	void setListener(WebSocketListener*);
 	void handleMessage(const string &message) throw (WebSocketException, SocketException);
+	void sendData(int temp, int waterLevel);
 	string getForeignAddress() { return sock->getForeignAddress().getAddress(); }
 	int getMessageCount(){ return commands.size();}
 	queue<string> *getMessages(){ return &commands; }

@@ -106,6 +106,33 @@ void WebSocket::handleMessage(const string &message) throw (WebSocketException, 
 
     }
 }
+
+void WebSocket::sendData(int temp, int waterLevel){
+	string message = "[{ \"temp\": \" " + to_string(temp) + " \",\"water\": \""+ to_string(waterLevel) +"\" }]";
+
+
+	int payloadlen = message.length();
+    int realLen = message.length();
+    const char* payload = message.c_str();
+    if(payloadlen > 125){
+        payloadlen = 126;
+        char* frame = new char[4 + realLen];
+        frame[0] = 0x81; //fin = 1, opc = 0x8
+        frame[1] = payloadlen;
+        frame[2] = (realLen << 8) & 0xFF;
+        frame[3] = frame[3]= realLen & 0xFF;
+        memcpy(frame+4, payload, realLen);
+        sock->send(frame, realLen+4);
+        delete[] frame;
+    }else{
+        char* frame = new char[2 + payloadlen];
+        frame[0] = 0x81; //fin = 1, opc = 0x8
+        frame[1] = payloadlen;
+        memcpy(frame+2, payload, payloadlen);
+        sock->send(frame, payloadlen+2);
+        delete[] frame;
+    }
+}
 //stuur een closeframe
 //payload dient te bestaan uit een code en een reason
 void WebSocket::sendClose(const char* payload, size_t payloadlen) throw (SocketException){

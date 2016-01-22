@@ -5,7 +5,9 @@
 
 #include "broadcaster.h"
 
-Broadcaster::Broadcaster()
+Broadcaster::Broadcaster(TempSensor* tempSensor, WaterLevel* waterLevel):
+tempSensor(tempSensor),
+waterLevel(waterLevel)
 {
 }
 
@@ -27,6 +29,16 @@ void Broadcaster::broadcast(const string& message){
 	std::lock_guard<std::mutex> lock(mutex);
 	for (std::list<WebSocket*>::iterator it=theList.begin(); it!=theList.end(); ++it)
 		(*it)->handleMessage(message);
+}
+
+void Broadcaster::setWSData(){
+	if(readyForSending){
+		std::lock_guard<std::mutex> lock(mutex);
+		for (std::list<WebSocket*>::iterator it=theList.begin(); it!=theList.end(); ++it){
+			(*it)->sendData(tempSensor->getTemp(), waterLevel->getLevel());	
+		}
+	}
+	
 }
 
 bool Broadcaster::CheckForMessages(){
