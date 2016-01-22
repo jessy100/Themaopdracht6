@@ -25,7 +25,7 @@ class WasProgrammaTask : public RTOS::task{
 	public:
 	WasProgrammaTask(short prio, const char* name, UartCommunicator* uart, Broadcaster & b, WaterValve* waterValve, 
 					WaterLevel* waterLevel, TempSensor* tempSensor, HeatingUnit* heatingUnit, Trommel* trommel, 
-					SoapDispenser* soapDispenser, Pump* pump):
+					SoapDispenser* soapDispenser, Pump* pump, DoorLock* doorLock):
 		RTOS::task(prio, name),
 		uartCom(uart),
 		b(b),
@@ -35,7 +35,8 @@ class WasProgrammaTask : public RTOS::task{
 		heatingUnit(heatingUnit),
 		trommel(trommel),
 		soapDispenser(soapDispenser),
-		pump(pump)
+		pump(pump),
+		doorLock(doorLock)
 		{}
 		
 	private:
@@ -52,9 +53,10 @@ class WasProgrammaTask : public RTOS::task{
 		Trommel* trommel;
 		SoapDispenser* soapDispenser;
 		Pump* pump;
+		DoorLock* doorLock;
 
 		//test
-		bool done = false,afpompen = false, inProgress = false, doneFilling = false, doneHeating = false,doneRotating = false, donePumping = false;
+		bool done = false,afpompen = false, inProgress = false, doneFilling = false, doneHeating = false,doneRotating = false, donePumping = false, doorLocked = false;
 	
 	private:
 		Broadcaster & b;
@@ -159,22 +161,33 @@ class WasProgrammaTask : public RTOS::task{
 		doneHeating = false;
 		doneRotating = false;
 		donePumping = false;
+		doorLocked = false;
 		max_temp = 0;
+		doorLock.setDoorLock(false);
 	}
 
 	void main(void){
 		for (;;) {
-			if(!b.CheckForMessages() && !inProgress){
-				sleep(500 MS);
-			}else if(!inProgress){
-				commands = b.getMessages();
-				init();
+			if(!inProgress){
+				if(b.CheckForMessages()){
+					commands = b.getMessages();
+					init();
+				}
+				else{
+					sleep(500 MS);
+				}
 			}
-			if(inProgress){
+			else{
 				if(delay != 0){
 					sleep((delay * 1000) MS);
-				}			
-				if(!doneFilling){
+				}
+				if(!doorLocked){
+					if(doorLock.getDoorLock() == Status::eCLOSED){
+						doorLock.setDoorLock(true);
+						doorLocked = true;
+					}
+				}
+				if(!doneFilling && doorLocked){
 					fillDrum();
 					setSoap(true);
 				}
