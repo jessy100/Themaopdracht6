@@ -1,9 +1,8 @@
-/******************************************************************************\
- FILE:   main.cpp
-
- This file contains several programs to test the RTOS package.
-
-\******************************************************************************/
+/*!
+*   @author     Jessy Visch, Zehna van den berg, Koen de Groot, Joost Wagensveld
+*   @project    Themaopdracht 6, Wasmachine
+*   @brief      Main of project
+*/
 
 #include "pRTOS.h"
 #include "libserial.h"

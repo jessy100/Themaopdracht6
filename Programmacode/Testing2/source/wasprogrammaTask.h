@@ -1,3 +1,9 @@
+/*!
+*   @author     Jessy Visch, Zehna van den berg, Koen de Groot, Joost Wagensveld
+*   @project    Themaopdracht 6, Wasmachine
+*   @brief      Containts all logic to run a washingprogram 
+*/
+
 #ifndef _WASPROGRAMMA_TASK
 #define _WASPROGRAMMA_TASK
 
@@ -12,6 +18,9 @@
 
 using namespace std;
 
+/** \class WasProgrammaTask
+	* \brief is the controller responsible for executing a washingprogram 
+*/
 class WasProgrammaTask : public RTOS::task{
 	public:
 	WasProgrammaTask(short prio, const char* name, UartCommunicator* uart, Broadcaster & b, WaterValve* waterValve, 
@@ -50,10 +59,9 @@ class WasProgrammaTask : public RTOS::task{
 	private:
 		Broadcaster & b;
 		queue<string> *commands	;
-	/* TODO
-	* Get temperature, delay and wasprogramma type from queue
-	* make sensor calls
-	* open file with wasmachine data
+
+	/** \brief loadWasProgramma is responsible for reading all the washingprogram settings from a textfile.
+	* \Param file is the textfile with the needed settings
 	*/
 	void loadWasProgramma(string file){
 		//waterValve->setWaterValve(true);
@@ -65,7 +73,9 @@ class WasProgrammaTask : public RTOS::task{
 			myfile.close();
 		}
 	}
-		
+	
+	/** \brief fillDrum checks if the drums waterlevel is lower then the max water level. If it is it will enable the waterValve.
+	*/
 	void fillDrum(){
 		if(waterLevel->getLevel() < max_water_level && !afpompen){
 			waterValve->setWaterValve(true);
@@ -75,6 +85,8 @@ class WasProgrammaTask : public RTOS::task{
 		}	
 	}
 
+	/** \brief EmptyDrum empties the Drum by enabling the waterPump.
+	*/
 	void emptyDrum(){
 		if(waterLevel->getLevel() > 0){
 			pump->setPump(true);
@@ -84,6 +96,8 @@ class WasProgrammaTask : public RTOS::task{
 		}
 	}
 	
+	/** \brief checks if the current temperature is lower then the max temperature. if it is, it will enable the heating unit
+	*/
 	void heat(){
 		if(tempSensor->getTemp() < max_temp){
 			heatingUnit->setHeatingUnit(true);
@@ -93,10 +107,16 @@ class WasProgrammaTask : public RTOS::task{
 		}
 	}
 	
+	/** \brief enables the soapDispenser element
+	* \Param status if this parameter is false, the soap dispenser will be disabled. if true, it will be enabled.
+	*/
 	void setSoap(bool status){
 		soapDispenser->setSoapDispenser(status);
 	}
 	
+	/** \brief enables the motor element
+	* \Param status if this parameter is false, rotate counterclockwise. if true, rotate clockwise.
+	*/
 	void rotate(bool status){
 
 		if(status){
@@ -109,6 +129,9 @@ class WasProgrammaTask : public RTOS::task{
 		}
 		
 	}
+
+	/** \brief Initialises the washing program by reading the commands queue and calling the loadWasprogramam function with the queue data.
+	*/
 
 	void init(){
 		filename = commands->front();
@@ -127,7 +150,8 @@ class WasProgrammaTask : public RTOS::task{
 	}
 
 
-	//properly reset all values in order for the next washingprogram to start correctly;
+	/** \brief Resets all bools and variables in order to be able to start another washingprogram
+	*/
 	void reset(){
 		inProgress = false;
 		b.setReadyForSending(false);
