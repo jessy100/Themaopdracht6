@@ -51,5 +51,5 @@ test: $(TEST_OBJS) $(RTOS_OBJS)
 	$(CPP) $(CPPFLAGS) $<
 
 # Dependencies
-test.o: test.cpp ./source/uartCommunicator.h ./source/uartTask.h ./source/sensorTask.h ./source/Sensor.h ./source/wasprogrammaTask.h ./source/UpdatingSensor.h ./source/broadcaster.h ./source/websocketTask.h ./source/pRTOS.h ./source/libfiber.h ./source/libserial.h ./source/Protocol.h ./source/PracticalSocket.h  ./source/base64.h  
+test.o: test.cpp uartCommunicator.h uartTask.h sensorTask.h Sensor.h wasprogrammaTask.h ./source/UpdatingSensor.h ./source/broadcaster.h websocketTask.h ./source/pRTOS.h ./source/libfiber.h ./source/libserial.h ./source/Protocol.h ./source/PracticalSocket.h  ./source/base64.h  
 pRTOS.o: ./source/pRTOS.cpp ./source/pRTOS.h ./source/libfiber.cpp ./source/libfiber.h
