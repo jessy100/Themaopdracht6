@@ -1,3 +1,9 @@
+/*!
+*   @author     Jessy Visch, Zehna van den berg, Koen de Groot, Joost Wagensveld
+*   @project    Themaopdracht 6, Wasmachine
+*   @brief      Handles all new connections and makes a new socket for them.
+*/
+
 #include <iostream>
 #include <thread>
 #include "wasprogrammaTask.h"

@@ -31,7 +31,7 @@ LFLAGS = -pthread -lcrypto
 LIBS =
 
 # Object files for the test program
-TEST_OBJS = test.o
+TEST_OBJS = main.o
 
 # RTOS object files
 RTOS_OBJS = libfiber.o pRTOS.o libserial.o PracticalSocket.o websocket.o broadcaster.o base64.o
@@ -51,5 +51,5 @@ test: $(TEST_OBJS) $(RTOS_OBJS)
 	$(CPP) $(CPPFLAGS) $<
 
 # Dependencies
-test.o: test.cpp ./source/uartCommunicator.h ./source/uartTask.h ./source/sensorTask.h ./source/Sensor.h ./source/wasprogrammaTask.h ./source/UpdatingSensor.h ./source/broadcaster.h ./source/websocketTask.h ./source/pRTOS.h ./source/libfiber.h ./source/libserial.h ./source/Protocol.h ./source/PracticalSocket.h  ./source/base64.h  
+main.o: main.cpp ./source/uartCommunicator.h ./source/uartTask.h ./source/sensorTask.h ./source/Sensor.h ./source/wasprogrammaTask.h ./source/UpdatingSensor.h ./source/broadcaster.h ./source/websocketTask.h ./source/pRTOS.h ./source/libfiber.h ./source/libserial.h ./source/Protocol.h ./source/PracticalSocket.h  ./source/base64.h  
 pRTOS.o: ./source/pRTOS.cpp ./source/pRTOS.h ./source/libfiber.cpp ./source/libfiber.h

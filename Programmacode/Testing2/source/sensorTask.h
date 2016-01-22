@@ -1,3 +1,9 @@
+/*!
+*   @author     Jessy Visch, Zehna van den berg, Koen de Groot, Joost Wagensveld
+*   @project    Themaopdracht 6, Wasmachine
+*   @brief      Task which is respnsible for updating the Sensors.
+*/
+
 #ifndef _SENSORTASK_H
 #define _SENSORTASK_H
 
@@ -9,13 +15,18 @@
 
 using namespace std;
 
+/** \class Sensor_task
+	* \brief Is responsible for adding and updating sensor
+	*/
 class Sensor_task : public RTOS::task{
 public:
 	Sensor_task(short prio, const char* name, Broadcaster* b):
 		RTOS::task(prio, name),
 		b(b)
 		{}
-
+/** \brief addSensor adds a sensor to the sensors vector
+	* \Param UpdatingSensor the instance of any sensor
+*/
 	void addSensor(UpdatingSensor* s){
 		sensors.push_back(s);
 	}

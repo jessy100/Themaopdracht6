@@ -1,3 +1,9 @@
+/*!
+*   @author     Jessy Visch, Zehna van den berg, Koen de Groot, Joost Wagensveld
+*   @project    Themaopdracht 6, Wasmachine
+*   @brief      Handles the opening reading and writing of the uart.
+*/
+
 #ifndef _UARTTASK_H
 #define _UARTTASK_H
 
@@ -7,6 +13,9 @@
 
 using namespace std;
 
+/** \class uartCommunicator
+	* \brief is Responsible for calling the UARTCommunicator to do its commands.
+*/
 class Uart_task : public RTOS::task{
 public:
 	Uart_task(short prio, const char * name, UartCommunicator* uartCom):
@@ -20,6 +29,8 @@ private:
 	int reply = 0;
 	
 private:
+	/** \brief writeSerial is responsible for sending commands via the uartCommunicator
+	*/
 	void writeSerial(){
 		Requests req = uartCom->readCommand();
 		serial.writeChar(req.first);

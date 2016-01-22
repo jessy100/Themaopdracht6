@@ -1,3 +1,9 @@
+/*!
+*   @author     Jessy Visch, Zehna van den berg, Koen de Groot, Joost Wagensveld
+*   @project    Themaopdracht 6, Wasmachine
+*   @brief      Handles inbound and outbound messages.
+*/
+
 #ifndef WEBSOCKET_H
 #define WEBSOCKET_H
 

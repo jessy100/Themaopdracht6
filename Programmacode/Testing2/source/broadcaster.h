@@ -1,3 +1,8 @@
+/*!
+*   @author     Jan zuurbier, Jessy Visch
+*   @project    Themaopdracht 6, Wasmachine
+*   @brief      Broadcaster for all websockets
+*/
 
 // Jan Zuurbier september 2014
 // De broadcaster is thread-safe gemaakt.
