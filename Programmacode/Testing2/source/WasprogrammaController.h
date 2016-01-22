@@ -21,9 +21,9 @@ using namespace std;
 /** \class WasProgrammaTask
 	* \brief is the controller responsible for executing a washingprogram 
 */
-class WasProgrammaTask : public RTOS::task{
+class WasprogrammaController : public RTOS::task{
 	public:
-	WasProgrammaTask(short prio, const char* name, UartCommunicator* uart, Broadcaster & b, WaterValve* waterValve, 
+	WasprogrammaController(short prio, const char* name, UartCommunicator* uart, Broadcaster & b, WaterValve* waterValve, 
 					WaterLevel* waterLevel, TempSensor* tempSensor, HeatingUnit* heatingUnit, Trommel* trommel, 
 					SoapDispenser* soapDispenser, Pump* pump, DoorLock* doorLock):
 		RTOS::task(prio, name),
