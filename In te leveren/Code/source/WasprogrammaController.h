@@ -73,10 +73,10 @@ class WasprogrammaController : public RTOS::task{
 			getline(myfile,line);
 			wasRpm = atoi(line.c_str());
 			cout << "RPM voor centrifugeren : " << wasRpm << endl;
-			/*getline(myfile,line);
+			getline(myfile,line);
 			maxSpoelBeurt = atoi(line.c_str());
 			cout << "maxSpoelBeurt : " << maxSpoelBeurt << endl;
-			*/
+			
 			myfile.close();
 		}
 	}

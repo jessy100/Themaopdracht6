@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>  Wasmachine interface </title>
+	<link rel="stylesheet" type="text/css" href="css/jquery.dynameter.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="myscript.js" async="false"> </script>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body bgcolor="#ffffff">
+	<div class="row">
+		<div class="wasprogramma">
+			<div id="was_bont" class="wasprogramma-detail">
+				Bonte was
+			</div>
+		</div>
+		<div class="wasprogramma">
+			<div id="was_wol" class="wasprogramma-detail">
+				Wol was
+			</div>
+		</div>
+		<div class="wasprogramma">
+			<div id="was_fijn" class="wasprogramma-detail">
+				Fijne was
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-detail hidden">
+			<div class="element">
+				<div class="element-desc">Temperatuur</div>
+				<div class="element-input"><input type="number" id="temperatuur" min="1" max="120"></div>
+			</div>
+			<div class="element">
+				<div class="element-desc">Inplannen?</div>
+				<div class="element-input"><input type="checkbox" id="inplannen" value=""></div>
+			</div>
+			<div class="element element-inplannen hidden">
+				<div class="element-desc">Tijd</div>
+				<div class="element-input"><input type="text" id="inplan_delay" placeholder="bv 19:30"></div>
+			</div>
+			<div class="element ">
+				<div class="element-desc"><input type="submit" id="submit" value="opslaan">	</div>
+				<div class="element-input"> </div>
+			</div>
+
+		</div>
+	</div>
+	<div class="row">
+	<div id="tempMeterDiv" class="wrapper"></div>
+	<div id="waterMeterDiv" class="wrapper"></div>
+	<script type="text/javascript">
+		var $tempMeter = null;
+		$( function () {
+			$tempMeter = $('div#tempMeterDiv').dynameter({
+				// REQUIRED.
+				label: 'Temperatuur',
+				value: 14,
+				unit: 'graden',
+				min: 0,
+				max: 100
+			});
+		});
+	</script>
+		<script type="text/javascript">
+		var $waterMeter = null;
+		$( function () {
+			$waterMeter = $('div#waterMeterDiv').dynameter({
+				// REQUIRED.
+				label: 'WaterNiveau',
+				value: 0,
+				unit: 'Percentage',
+				min: 0,
+				max: 100
+			});
+		});
+	</script>
+	</div>
+	
+	<script type="text/javascript" src="js/jquery.dynameter.js"></script>
+</body>
+</html>
