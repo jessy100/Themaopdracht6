@@ -21,9 +21,9 @@ using namespace std;
 /** \class WasProgrammaTask
 	* \brief is the controller responsible for executing a washingprogram 
 */
-class WasProgrammaTask : public RTOS::task{
+class WasprogrammaController : public RTOS::task{
 	public:
-	WasProgrammaTask(short prio, const char* name, UartCommunicator* uart, Broadcaster & b, WaterValve* waterValve, 
+	WasprogrammaController(short prio, const char* name, UartCommunicator* uart, Broadcaster & b, WaterValve* waterValve, 
 					WaterLevel* waterLevel, TempSensor* tempSensor, HeatingUnit* heatingUnit, Trommel* trommel, 
 					SoapDispenser* soapDispenser, Pump* pump, DoorLock* doorLock):
 		RTOS::task(prio, name),
@@ -56,7 +56,8 @@ class WasProgrammaTask : public RTOS::task{
 		DoorLock* doorLock;
 
 		//test
-		bool done = false,afpompen = false, inProgress = false, doneFilling = false, doneHeating = false,doneRotating = false, donePumping = false, doorLocked = false;
+		bool done = false, afpompen = false, inProgress = false, doneFilling = false, doneHeating = false,doneRotating = false, donePumping = false, doorLocked = false, soapAdded = false, doneCentrifuge = false;
+		int maxSpoelBeurt = 6, spoelBeurt = 0, wasRpm = 1400;
 	
 	private:
 		Broadcaster & b;
@@ -66,12 +67,16 @@ class WasProgrammaTask : public RTOS::task{
 	* \Param file is the textfile with the needed settings
 	*/
 	void loadWasProgramma(string file){
-		//waterValve->setWaterValve(true);
-		ifstream myfile (file);
+		ifstream myfile ((file + ".txt"));
+		string line;
 		if(myfile.is_open()){
-			while(getline(myfile,line)){
-				
-			}
+			getline(myfile,line);
+			wasRpm = atoi(line.c_str());
+			cout << "RPM voor centrifugeren : " << wasRpm << endl;
+			/*getline(myfile,line);
+			maxSpoelBeurt = atoi(line.c_str());
+			cout << "maxSpoelBeurt : " << maxSpoelBeurt << endl;
+			*/
 			myfile.close();
 		}
 	}
@@ -117,19 +122,23 @@ class WasProgrammaTask : public RTOS::task{
 	}
 	
 	/** \brief enables the motor element
-	* \Param status if this parameter is false, rotate counterclockwise. if true, rotate clockwise.
+	* \Param rpm set the speed of rotation for the drum
+	* \Param turnTime set the duration how long the drum rotates to each side
 	*/
-	void rotate(bool status){
-
-		if(status){
-			trommel->setRPM(1600, false);
-			sleep(3000 MS);
-			trommel->setRPM(1600, true);	
-		}else{
-			trommel->setRPM(0,false);
-			doneRotating = true;
-		}
+	void rotate(int rpm, int turnTime){
+		trommel->setRPM(rpm, false);
+		sleep(turnTime MS);
+		trommel->setRPM(rpm, true);
+		sleep(turnTime MS);
 		
+		trommel->setRPM(0,false);
+		doneRotating = true;
+	}
+	
+	void setSpoelen(){
+		doneFilling = false;
+		doneRotating = false;
+		donePumping = false;
 	}
 
 	/** \brief Initialises the washing program by reading the commands queue and calling the loadWasprogramam function with the queue data.
@@ -146,9 +155,9 @@ class WasProgrammaTask : public RTOS::task{
 		cout << "MESSAGE FROM WASPROGRAMAMTASK :" << delay << "\n";
 		commands->pop();
 		
+		loadWasProgramma(filename);
 		inProgress = true;
 		b.setReadyForSending(true);
-
 	}
 
 
@@ -162,8 +171,11 @@ class WasProgrammaTask : public RTOS::task{
 		doneRotating = false;
 		donePumping = false;
 		doorLocked = false;
+		soapAdded = false;
+		doneCentrifuge = false;
+		spoelBeurt = 0;
 		max_temp = 0;
-		doorLock.setDoorLock(false);
+		doorLock->setDoorLock(false);
 	}
 
 	void main(void){
@@ -182,31 +194,47 @@ class WasProgrammaTask : public RTOS::task{
 					sleep((delay * 1000) MS);
 				}
 				if(!doorLocked){
-					if(doorLock.getDoorLock() == Status::eCLOSED){
-						doorLock.setDoorLock(true);
+					if(doorLock->getDoorLock() == Status::eCLOSED){
+						doorLock->setDoorLock(true);
 						doorLocked = true;
 					}
 				}
+				
 				if(!doneFilling && doorLocked){
 					fillDrum();
-					setSoap(true);
 				}
-				if(doneFilling && !doneHeating){
-					heat();	
+				
+				if(!soapAdded && doorLocked){
+					setSoap(true);
+					soapAdded = true;
+				}
+				
+				if(soapAdded && doneFilling){
 					setSoap(false);
 				}
 				
+				if(doneFilling && !doneHeating){
+					heat();
+				}
+				
 				if(doneHeating && !doneRotating){
-					rotate(true);
-					sleep(10000 MS);
-					rotate(false);
+					rotate(25, 6000);
 				}
 
 				if(doneRotating){
 					emptyDrum();
 				}
 				
-				if(donePumping){
+				if(maxSpoelBeurt > spoelBeurt && donePumping){
+					setSpoelen();
+					++spoelBeurt;
+				}
+				
+				if(!doneCentrifuge && maxSpoelBeurt == spoelBeurt){
+					rotate(wasRpm, 10000);
+				}
+				
+				if(doneCentrifuge){
 					reset();
 				}
 			}

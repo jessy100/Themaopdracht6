@@ -11,21 +11,19 @@
 #include <thread>
 #include "PracticalSocket.h"
 #include "websocket.h"
-
+#include "WasprogrammaController.h"
 #include "uartCommunicator.h"
 #include "sensorTask.h"
 #include "websocketTask.h"
 #include "uartTask.h"
 #include "Sensor.h"
 #include "UpdatingSensor.h"
- #include "broadcaster.h"
+#include "broadcaster.h"
 /******************************************************************************\
  main routine
 \******************************************************************************/
 int main( void )
-{
-	
-	
+{	
 	cout << "runt";
 	UartCommunicator uartCom;
 	TempSensor tempSensor(&uartCom);
@@ -39,10 +37,8 @@ int main( void )
 	Pump pump(&uartCom);
 	Uart_task uart(20, "UART", &uartCom);
 	
-	
 	Broadcaster b(&tempSensor, &waterLevel);
 	Sensor_task sensor(30, "SensorHandler", &b);
-	
 
 	sensor.addSensor(&tempSensor);
 	sensor.addSensor(&waterLevel);
@@ -50,7 +46,7 @@ int main( void )
 	sensor.addSensor(&trommel);
 	
 	Websocket_task ws(b);
-	WasProgrammaTask wasprogramma(40, "Wasprogramma", &uartCom, b, &waterValve, &waterLevel, &tempSensor, &heatingUnit, &trommel,&soapDispenser, &pump);
+	WasprogrammaController wasprogramma(40, "Wasprogramma", &uartCom, b, &waterValve, &waterLevel, &tempSensor, &heatingUnit, &trommel,&soapDispenser, &pump, &doorLock);
 	thread x(&Websocket_task::run,&ws);
 	RTOS::run();
 	return 0;

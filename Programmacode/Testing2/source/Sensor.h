@@ -313,7 +313,7 @@ public:
 	void setSoapDispenser(bool open){
 		short reply = handleRequest(SOAP_DISPENSER_REQ, ((open) ? OPEN_CMD : CLOSE_CMD));
 		//cout << "SoapDispenserSet = " << reply << endl;
-	}	
+	}
 };
 
 /** \class HeatingUnit
