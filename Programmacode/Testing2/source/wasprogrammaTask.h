@@ -56,7 +56,7 @@ class WasProgrammaTask : public RTOS::task{
 	* open file with wasmachine data
 	*/
 	void loadWasProgramma(string file){
-		waterValve->setWaterValve(true);
+		//waterValve->setWaterValve(true);
 		ifstream myfile (file);
 		if(myfile.is_open()){
 			while(getline(myfile,line)){
@@ -146,33 +146,33 @@ class WasProgrammaTask : public RTOS::task{
 				commands = b.getMessages();
 				init();
 			}
-		if(inProgress){
-		if(delay != 0){
-			sleep((delay * 1000) MS);
-		}			
-			if(!doneFilling){
-				fillDrum();
-				setSoap(true);
-			}
-			if(doneFilling && !doneHeating){
-				heat();	
-				setSoap(false);
-			}
-			
-			if(doneHeating && !doneRotating){
-				rotate(true);
-				sleep(10000 MS);
-				rotate(false);
-			}
+			if(inProgress){
+				if(delay != 0){
+					sleep((delay * 1000) MS);
+				}			
+				if(!doneFilling){
+					fillDrum();
+					setSoap(true);
+				}
+				if(doneFilling && !doneHeating){
+					heat();	
+					setSoap(false);
+				}
+				
+				if(doneHeating && !doneRotating){
+					rotate(true);
+					sleep(10000 MS);
+					rotate(false);
+				}
 
-			if(doneRotating){
-				emptyDrum();
+				if(doneRotating){
+					emptyDrum();
+				}
+				
+				if(donePumping){
+					reset();
+				}
 			}
-			
-			if(donePumping){
-				reset();
-			}
-		}
 			sleep(500 MS);
 		}	
 	}
